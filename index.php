@@ -1,5 +1,8 @@
 <?php
-//shitty code from shitty language goes here
+
+// Todo test this lol
+include_once("database.php");
+
 
 ?>
 
