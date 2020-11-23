@@ -2,7 +2,7 @@
 
 ## Database Config
 
-```
+```ini
 [db_config]
 ip = "server ip"
 user = "username"
