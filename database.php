@@ -1,8 +1,11 @@
 <?php
-// Todo server config
-$servername = "localhost";
-$username = "username";
-$password = "password";
+
+// Get the php.ini file with the db config
+$iniConfig = parse_ini_file("php.ini");
+
+$servername = $iniConfig["ip"];
+$username = $iniConfig["user"];
+$password = $iniConfig["password"];
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password);
