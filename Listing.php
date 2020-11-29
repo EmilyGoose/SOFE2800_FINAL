@@ -1,6 +1,7 @@
 <?php
     session_start();
-
+    //print_r($_SESSION);
+    //echo "sessionID: ".$_SESSION['sessionID'];
     // Checks if user is logged in (session id set)
     if (isset($_SESSION['sessionID'])){
         // Get the php.ini file with the db config
@@ -22,18 +23,26 @@
         $viewerid = $_SESSION['sessionID'];
 
 
-        if(isset($_POST['id'])){
-            $listingid = $_POST['id'];
-            $query="SELECT * FROM marketplace WHERE id= '$listingid'";
+        if(true){//isset($_POST['postersId'])){
+            $listingid = 1;//$_POST['postersId'];
+            $query="SELECT * FROM listing WHERE id= '1';";//$listingid'";
             $qresult = $connection->query($query);
                     
             // Obtains the data contained for the matching table row.
-            $row = $qresult->fetch_array(MYSQLI_NUM);
+            while($row = $qresult->fetch_assoc()){
+                $title = $row['title'];
+                $description = $row['description'];
+                $image = $row['image'];
+                $userid = $row['userid'];
+            }
 
-            $title = $row[1];
-            $description = $row[2];
-            $image = $row[3];
-            $userid = $row[4];
+            $query="SELECT username FROM user WHERE id= '$userid';";
+            $qresult = $connection->query($query);
+
+            // Obtains the data contained for the matching table row.
+            while($row = $qresult->fetch_assoc()){
+                $postingUsername = $row['username'];
+            }
         }
     }
     // Redirects to login page if user not logged in.
@@ -50,7 +59,7 @@
 
         <script type = "text/javascript">
             // Listener for button to redirect to offer page if clicked
-            document.getElementById("offerbtn").onclick = function () 
+            document.getElementById("offerbtn").onclick = function ()
             {
                 location.href = 'offer.php';
             }
@@ -59,8 +68,8 @@
     <body>
         
         <div id = "postHeader">
-            <h1><?php $title ?></h1>
-            <h3>Posted By: <?php echo $userid ?></h3>
+            <h1><?php echo $title ?></h1>
+            <h3>Posted By: <?php echo $postingUsername ?></h3>
         </div>
         <div id="imgdisplay">
             <img src="<?php echo $image ?>" alt="poster's image">

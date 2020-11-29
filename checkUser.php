@@ -14,7 +14,10 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 //link to get back to login page
-echo "<a href=\"index.php\">Click here to return to home/login page</a>" ."<br>";
+echo "<a href=\"index.php\">Click here to go to index.php</a>" ."<br>";
+
+session_start();
+//echo "session id is: ". $_SESSION['sessionID']."<br>";
 
 // Get post request variables
 //$email = $_POST["email"];
@@ -37,7 +40,7 @@ if ($mode == "login") {
     if ($userExists) {
 
         // Get a user matching the email/password pair
-        $sql = "SELECT username FROM user WHERE username = '$username' AND passwordHash = '$password';";
+        $sql = "SELECT username ,id FROM user WHERE username = '$username' AND passwordHash = '$password';";
         $result = mysqli_query($conn, $sql);
         // If nothing was returned, the password is wrong
         if ($result->num_rows == 0) {
@@ -45,6 +48,9 @@ if ($mode == "login") {
         } else {
             while ($row = $result->fetch_assoc()) {
                 echo "Welcome ".$row['username']."<br>";
+                $_SESSION['sessionID'] = $row['id'];
+                echo "your User id is ".$row['id']."<br>" ."session id is the same: ".$_SESSION['sessionID'];
+                echo "<a href=\"Listing.php\">Click here to got to Listing.php page</a>" ."<br>";//header("Location:Listing.php");
             }
         }
     } else {
