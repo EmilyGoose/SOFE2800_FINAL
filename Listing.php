@@ -1,38 +1,47 @@
-<!DOCTYPE html>
 <?php
+    session_start();
 
-    // Get the php.ini file with the db config
-    $iniConfig = parse_ini_file("php.ini");
+    // Checks if user is logged in (session id set)
+    if (isset($_SESSION['userID'])){
+        // Get the php.ini file with the db config
+        $iniConfig = parse_ini_file("php.ini");
     
-    //Establishing connection
-    $servername = $iniConfig["ip"];
-    $dbusername = $iniConfig["user"];
-    $password = $iniConfig["password"];
-    $dbname = $iniConfig["database"];
-    $connection = mysqli_connect ($servername, $dbusername, $password, $dbname);
+        //Establishing connection
+        $servername = $iniConfig["ip"];
+        $dbusername = $iniConfig["user"];
+        $password = $iniConfig["password"];
+        $dbname = $iniConfig["database"];
+        $connection = mysqli_connect ($servername, $dbusername, $password, $dbname);
 
-    // Output error message if connection unsuccessful.
-    if (mysqli_connect_errno() || $connection === false){
-        die("Database connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
-    }
+        // Output error message if connection unsuccessful.
+        if (mysqli_connect_errno() || $connection === false){
+            die("Database connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
+        }
 
-    // GET SESSION USER'S USER ID HERE SOMEHOW
-    $viewerid = "";
+        // Get session user's id
+        $viewerid = $_SESSION['userID'];
 
 
-    if(isset($_POST['id'])){
-        $listingid = $_POST['id'];
-        $query="SELECT * FROM users WHERE id= '$listingid'";
-        $qresult = $connection->query($query);
+        if(isset($_POST['id'])){
+            $listingid = $_POST['id'];
+            $query="SELECT * FROM marketplace WHERE id= '$listingid'";
+            $qresult = $connection->query($query);
                     
-        // Obtains the data contained for the matching table row.
-        $row = $qresult->fetch_array(MYSQLI_NUM);
+            // Obtains the data contained for the matching table row.
+            $row = $qresult->fetch_array(MYSQLI_NUM);
 
-        $title = $row[1];
-        $description = $row[2];
-        $image = $row[3];
-        $userid = $row[4];
+            $title = $row[1];
+            $description = $row[2];
+            $image = $row[3];
+            $userid = $row[4];
+        }
     }
+    // Redirects to login page if user not logged in.
+    else{
+        header("Location:login.php");
+        exit;
+    }
+    
 ?>
 <html>
     <head>
@@ -60,7 +69,7 @@
             <h3>Item Description:</h3>
             <h4><?php echo $description ?></h4>
         </div>
-        <!-- Hides button if user viewing is same as posting user -->
+        <!-- Hides button (adds hidden class) if user viewing is same as posting user -->
         <div id = "offer <?php if ($userid == $viewerid ) echo 'hidden'?>">
             <input type = "button" id = "offerbtn" value = "Make an Offer!">
         </div>
