@@ -2,7 +2,7 @@
     session_start();
 
     // Checks if user is logged in (session id set)
-    if (isset($_SESSION['userID'])){
+    if (isset($_SESSION['sessionID'])){
         // Get the php.ini file with the db config
         $iniConfig = parse_ini_file("php.ini");
     
@@ -19,7 +19,7 @@
         }
 
         // Get session user's id
-        $viewerid = $_SESSION['userID'];
+        $viewerid = $_SESSION['sessionID'];
 
 
         if(isset($_POST['id'])){
