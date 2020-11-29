@@ -2,7 +2,7 @@
 
 // Todo test this lol
 include_once("database.php");
-
+include_once("login.php")
 
 ?>
 

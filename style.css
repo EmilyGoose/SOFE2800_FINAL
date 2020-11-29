@@ -1,0 +1,65 @@
+body {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+input, label {
+    display:block;
+    font-family: Roboto, sans-serif;
+}
+
+input {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.headerButton {
+    border: none;
+    width: 50%;
+    margin: 0;
+    height: 50px;
+    background-color: #90CAF9;
+    outline: none;
+    cursor: pointer;
+}
+
+.formHeader {
+    font-family: Montserrat, sans-serif;
+}
+
+.signup {
+    display: none;
+}
+
+#submit {
+    background-color: #BBDEFB;
+    height: 40px;
+}
+
+#loginButton {
+    background-color: #42A5F5;
+}
+
+#splitHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+#mode {
+    visibility: hidden;
+    height: 5px;
+}
+
+#formBody {
+    margin: 20px;
+}
+
+#loginBox {
+    align-items:center;
+    border: 1px solid black;
+    background-color: #E3F2FD;
+}
