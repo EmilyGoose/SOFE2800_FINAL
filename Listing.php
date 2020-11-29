@@ -1,6 +1,5 @@
 <?php
     session_start();
-    //print_r($_SESSION);
     //echo "sessionID: ".$_SESSION['sessionID'];
     // Checks if user is logged in (session id set)
     if (isset($_SESSION['sessionID'])){
@@ -22,35 +21,27 @@
         // Get session user's id
         $viewerid = $_SESSION['sessionID'];
 
-
+        // Gets id of listing to be displayed from post stream <- NEEDS TO BE PARAM REQUEST FOR LISTING ID
         if(isset($_POST['whichListing'])){
             $listingid = $_POST['whichListing'];
             $query="SELECT * FROM listing WHERE id= '$listingid'";
-            echo $query; // Why are we echoing here?
             $qresult = $connection->query($query);
-            
-            /* Creates array with numerical indecies for the matching row (0-4)
-            $row = $qresult->fetch_array(MYSQLI_NUM);
-            $title = $row[1];
-            $description = $row[2];
-            $image = $row[3];
-            $userid = $row[4]; */
 
             // Obtains the data contained for the matching table row.
-            while($row = $qresult->fetch_assoc()){
-                $title = $row['title'];
-                $description = $row['description'];
-                $image = $row['image'];
-                $userid = $row['userid'];
-            }
+            $row = $qresult->fetch_assoc();
+            $title = $row['title'];
+            $description = $row['description'];
+            $image = $row['image'];
+            $userid = $row['userid'];
+           
 
             $query="SELECT username FROM user WHERE id= '$userid';";
             $qresult = $connection->query($query);
 
             // Obtains the data contained for the matching table row.
-            while($row = $qresult->fetch_assoc()){
-                $postingUsername = $row['username'];
-            }
+            $row = $qresult->fetch_assoc();
+            $postingUsername = $row['username'];
+            
         }
     }
     // Redirects to login page if user not logged in.
