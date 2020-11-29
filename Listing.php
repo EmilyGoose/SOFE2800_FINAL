@@ -26,9 +26,16 @@
         if(isset($_POST['whichListing'])){
             $listingid = $_POST['whichListing'];
             $query="SELECT * FROM listing WHERE id= '$listingid'";
-            echo $query;
+            echo $query; // Why are we echoing here?
             $qresult = $connection->query($query);
-                    
+            
+            /* Creates array with numerical indecies for the matching row (0-4)
+            $row = $qresult->fetch_array(MYSQLI_NUM);
+            $title = $row[1];
+            $description = $row[2];
+            $image = $row[3];
+            $userid = $row[4]; */
+
             // Obtains the data contained for the matching table row.
             while($row = $qresult->fetch_assoc()){
                 $title = $row['title'];
