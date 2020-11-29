@@ -49,8 +49,9 @@ if ($mode == "login") {
             while ($row = $result->fetch_assoc()) {
                 echo "Welcome ".$row['username']."<br>";
                 $_SESSION['sessionID'] = $row['id'];
-                echo "your User id is ".$row['id']."<br>" ."session id is the same: ".$_SESSION['sessionID'];
-                echo "<a href=\"Listing.php\">Click here to got to Listing.php page</a>" ."<br>";//header("Location:Listing.php");
+                //echo "your User id is ".$row['id']."<br>" ."session id is the same: ".$_SESSION['sessionID'];
+                header("Location:home.php");
+
             }
         }
     } else {

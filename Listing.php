@@ -23,9 +23,10 @@
         $viewerid = $_SESSION['sessionID'];
 
 
-        if(true){//isset($_POST['postersId'])){
-            $listingid = 1;//$_POST['postersId'];
-            $query="SELECT * FROM listing WHERE id= '1';";//$listingid'";
+        if(isset($_POST['whichListing'])){
+            $listingid = $_POST['whichListing'];
+            $query="SELECT * FROM listing WHERE id= '$listingid'";
+            echo $query;
             $qresult = $connection->query($query);
                     
             // Obtains the data contained for the matching table row.
@@ -55,7 +56,7 @@
 <html>
     <head>
         <!-- Insert using database once I figure it out ?? Is this even right??-->
-        <title> <?php echo $title ?> </title>
+        <title> <?php echo 'Listing: '.$title ?> </title>
 
         <script type = "text/javascript">
             // Listener for button to redirect to offer page if clicked
