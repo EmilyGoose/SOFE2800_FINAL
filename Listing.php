@@ -1,59 +1,52 @@
 <?php
     session_start();
-    //echo "sessionID: ".$_SESSION['sessionID'];
     // Checks if user is logged in (session id set)
-    if (isset($_SESSION['sessionID'])){
-        // Get the php.ini file with the db config
-        $iniConfig = parse_ini_file("php.ini");
+    include 'checkSessionID.php';
+
+    // Get session user's id
+    $viewerid = $_SESSION['sessionID'];
     
-        //Establishing connection
-        $servername = $iniConfig["ip"];
-        $dbusername = $iniConfig["user"];
-        $password = $iniConfig["password"];
-        $dbname = $iniConfig["database"];
-        $connection = mysqli_connect ($servername, $dbusername, $password, $dbname);
+    // Get the php.ini file with the db config
+    $iniConfig = parse_ini_file("php.ini");
+    
+    //Establishing connection
+    $servername = $iniConfig["ip"];
+    $dbusername = $iniConfig["user"];
+    $password = $iniConfig["password"];
+    $dbname = $iniConfig["database"];
+    $connection = mysqli_connect($servername, $dbusername, $password, $dbname);
 
-        // Output error message if connection unsuccessful.
-        if (mysqli_connect_errno() || $connection === false){
-            die("Database connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
-        }
+    // Output error message if connection unsuccessful.
+    if (mysqli_connect_errno() || $connection === false){
+        die("Database connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
+    }
 
-        // Get session user's id
-        $viewerid = $_SESSION['sessionID'];
 
-        // Gets id of listing to be displayed from post stream <- NEEDS TO BE PARAM REQUEST FOR LISTING ID
-        if(isset($_POST['whichListing'])){
-            $listingid = $_POST['whichListing'];
-            $query="SELECT * FROM listing WHERE id= '$listingid'";
-            $qresult = $connection->query($query);
+    // Gets id of listing to be displayed from post stream <- NEEDS TO BE PARAM REQUEST FOR LISTING ID
+    if(isset($_POST['whichListing'])){
+        $listingid = $_POST['whichListing'];
+        $query="SELECT * FROM listing WHERE id= '$listingid'";
+        $qresult = $connection->query($query);
 
-            // Obtains the data contained for the matching table row.
-            $row = $qresult->fetch_assoc();
-            $title = $row['title'];
-            $description = $row['description'];
-            $image = $row['image'];
-            $userid = $row['userid'];
+        // Obtains the data contained for the matching table row.
+        $row = mysqli_fetch_array($qresult, MYSQLI_ASSOC);
+        $title = $row['title'];
+        $description = $row['description'];
+        $image = $row['image'];
+        $userid = $row['userid'];
            
 
-            $query="SELECT username FROM user WHERE id= '$userid';";
-            $qresult = $connection->query($query);
+        $query="SELECT username FROM user WHERE id= '$userid';";
+        $qresult = mysqli_query($connection,$query);
 
-            // Obtains the data contained for the matching table row.
-            $row = $qresult->fetch_assoc();
-            $postingUsername = $row['username'];
+        // Obtains the data contained for the matching table row using mysqli.
+        $row = mysqli_fetch_array($qresult, MYSQLI_ASSOC);
+        $postingUsername = $row['username'];
             
-        }
     }
-    // Redirects to login page if user not logged in.
-    else{
-        header("Location:login.php");
-        exit;
-    }
-    
 ?>
 <html>
     <head>
-        <!-- Insert using database once I figure it out ?? Is this even right??-->
         <title> <?php echo 'Listing: '.$title ?> </title>
 
         <script type = "text/javascript">
@@ -68,6 +61,7 @@
         
         <div id = "postHeader">
             <h1><?php echo $title ?></h1>
+            <!-- Figure out how to turn this into a link to user's profile (pass their userid) -->
             <h3>Posted By: <?php echo $postingUsername ?></h3>
         </div>
         <div id="imgdisplay">

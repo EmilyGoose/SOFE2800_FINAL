@@ -1,6 +1,7 @@
 <?php
 session_start();
-$userid = $_POST["userProfile"];//controls which user's profile is displayed, rn displays the viewing users profile, this
+// Checks if user is logged in.
+include 'checkSessionID.php';
 
 $iniConfig = parse_ini_file("php.ini");
 
@@ -9,23 +10,23 @@ $servername = $iniConfig["ip"];
 $dbusername = $iniConfig["user"];
 $password = $iniConfig["password"];
 $dbname = $iniConfig["database"];
-$connection = mysqli_connect ($servername, $dbusername, $password, $dbname);
+$connection = mysqli_connect($servername, $dbusername, $password, $dbname);
 
 $query="SELECT * FROM user WHERE id = '$userid';";
-$result = $connection->query($query); // changed $Result to $result as capitals will not work
+$result = mysqli_query($connection, $query); // changed $Result to $result as capitals will not work
 
-// Obtain's the userid of the user to be loaded from button
-if(isset($_POST['userid'])){
-    $userid = $_POST['userid'];
+// Obtain's the userid of the user to be loaded from link <- ANOTHER PARAM REQUEST
+if(isset($_POST['postUserid'])){
+    $userid = $_POST['postUserid'];
     
     // Get user details based on their userid
     $query="SELECT * FROM users WHERE id= '$userid'";
-    $qresult = $connection->query($query);
+    $qresult = mysqli_query($connection, $query);
             
-    // Obtains the data contained for the matching table row to retrieve username.
-    $row = $qresult->fetch_array(MYSQLI_NUM);
-    $userid = $row[0];
-    $username = $row[1];
+    // Obtains the data contained for the matching table row to retrieve username using mysqli.
+    $row = mysqli_fetch_array($qresult, MYSQLI_ASSOC);
+    $userid = $row['id'];
+    $username = $row['username'];
 
 }
 /* Not entirely sure what daniel was doing here 
@@ -67,12 +68,14 @@ while($row = $qresult->fetch_assoc()){
 <head>
     <title>User: <?php echo $username  ?></title>
     <script>
+    /* I believe this is trying to toggle which listing displayed, will be printed out as links in loop under listings
         function whichListing(listingid){
             document.getElementById('whichListing').setAttribute(value,listingid) ;
             console.log("trying to change")
             document.forms['listingLinks'].submit()
 
         }
+        */
     </script>
 </head>
 <body>
@@ -91,24 +94,22 @@ while($row = $qresult->fetch_assoc()){
             }
             */
             ?>
-
-
-            <!-- I don't want to accidentally break anything so writing my (Jess) idea here -->
-            <!-- Need to retrieve each row one at a time, and sequentially print as there is not an easy way to store them -->
-
-            <!-- THIS IS WHERE I NEED TO FIGURE OUT HOW TO DO A PARAM REQUEST -->
-            <?php
-                $query="SELECT * FROM listing WHERE userid= '$userid'";
-                $qresult = $connection->query($query);
-                while($row = mysql_fetch_assoc($row)){
-                    $listingid = $row['id'];
-                    $title = $row['title'];
-                    echo '<h1><a href = \"Listing.php\">'.$title.'<a/></h1>'; // I want to somehow pass this listing's Id here
-                }
-            ?>
-
-
         </form>
+        
+
+        <!-- I don't want to accidentally break anything so writing my (Jess) idea here -->
+        <!-- Need to retrieve each row one at a time, and sequentially print as there is not an easy way to store them -->
+
+        <!-- THIS IS WHERE I NEED TO FIGURE OUT HOW TO DO A PARAM REQUEST -->
+        <?php
+            $query="SELECT * FROM listing WHERE userid= '$userid'";
+            $qresult = mysqli_query($connection, $query);
+            while($row = mysqli_fetch_array($qresult, MYSQLI_ASSOC)){
+                $listingid = $row['id'];
+                $title = $row['title'];
+                echo '<h1><a href = \"Listing.php\">'.$title.'<a/></h1>'; // I want to somehow pass this listing's Id here
+            }
+        ?>
 
     </div>
 
