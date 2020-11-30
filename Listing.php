@@ -74,7 +74,10 @@
 
         <!-- Hides button (adds hidden class) if user viewing is same as posting user -->
         <div id = "offer <?php if ($userid == $viewerid ) echo 'hidden'?>">
-            <input type = "button" id = "offerbtn" value = "Make an Offer!">
+            <form name="offer" action="makeOffer.php" method="post">
+                <input type="text" name="listingid" value="<?php echo $listingid; ?>" hidden>
+                <input type = "button"  onclick="forms['offer'].submit()" id = "offerbtn" value = "Make an Offer!">
+            </form>
         </div>
     </body>
 </html>
