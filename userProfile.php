@@ -13,9 +13,9 @@ $password = $iniConfig["password"];
 $dbname = $iniConfig["database"];
 $connection = mysqli_connect($servername, $dbusername, $password, $dbname);
 
-// Obtain's the userid of the user to be loaded from link <- ANOTHER PARAM REQUEST
-if(isset($_POST['postUserid'])){
-    $userid = $_POST['postUserid'];
+// Obtain's the userid of the user to be loaded from link userProfile.php?user=#
+if(isset($_GET['user'])){
+    $userid = $_GET['user'];
     
     // Get user details based on their userid
     $query="SELECT * FROM user WHERE id= '$userid'";
@@ -23,7 +23,6 @@ if(isset($_POST['postUserid'])){
 
     // Obtains the data contained for the matching table row to retrieve username using mysqli.
     $row = mysqli_fetch_array($qresult, MYSQLI_ASSOC);
-    $userid = $row['id'];
     $username = $row['username'];
 
 }

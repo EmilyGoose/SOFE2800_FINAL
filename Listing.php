@@ -61,8 +61,10 @@
         
         <div id = "postHeader">
             <h1><?php echo $title ?></h1>
-            <!-- Figure out how to turn this into a link to user's profile (pass their userid) -->
-            <h3>Posted By: <?php echo $postingUsername ?></h3>
+            <h3>Posted By: 
+            <?php 
+                echo $postingUsername .'<a href="userProfile.php?user=' . $userid . '">Click here to vist profile</a></h3>';
+            ?>
         </div>
         <div id="imgdisplay">
             <img src="<?php echo $image ?>" alt="poster's image">

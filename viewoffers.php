@@ -32,7 +32,7 @@ if (mysqli_connect_errno() || $connection === false){
                 $qresult = mysqli_query($connection, $query);
 
                 if(mysqli_num_rows($qresult) == 0){
-                    echo '<h2> You have no offers!</h2>';
+                    echo '<h2 id = "acceptmsg">You have no offers!</h2>';
                 }
                 else{
                     echo '<p id = "acceptmsg">To accept an offer, contact the other party!  Please delete the offer once you have contacted them.</p>';
