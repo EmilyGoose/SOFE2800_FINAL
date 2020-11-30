@@ -28,7 +28,7 @@ if (mysqli_connect_errno() || $connection === false){
             <?php
                 $counter = 0;
                 // Fetches all offers from table to display sequentially
-                $query="SELECT * FROM offers WHERE toUserid = '$viewerID';";
+                $query="SELECT * FROM offer WHERE toUserid = '$viewerID';";
                 $qresult = mysqli_query($connection, $query);
 
                 if(mysqli_num_rows($qresult) == 0){
