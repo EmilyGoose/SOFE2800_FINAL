@@ -72,9 +72,9 @@
             <h4><?php echo $description ?></h4>
         </div>
 
-        <!-- Hides button (adds hidden attribute) if user viewing is same as posting user -->
-        <div id = "offer "> 
-            <input type = "button" id = "offerbtn" value = "Make an Offer!"<?php if($userid == $viewerid ){echo 'hidden';} ?>>
+        <!-- Hides button (adds hidden class) if user viewing is same as posting user -->
+        <div id = "offer <?php if ($userid == $viewerid ) echo 'hidden'?>">
+            <input type = "button" id = "offerbtn" value = "Make an Offer!">
         </div>
     </body>
 </html>

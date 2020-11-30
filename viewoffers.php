@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'checkSessionID.php';
-$viewerID = $_SESSION['sessionID'];//controls which user's profile is displayed, rn displays the viewing users profile, this
+$viewerID = $_SESSION['sessionID'];
 
 $iniConfig = parse_ini_file("php.ini");
 
@@ -23,15 +23,33 @@ if (mysqli_connect_errno() || $connection === false){
         <title></title>
     </head>
     <body>
-        <h1>Your Offers:</h1>
-        <?php
-            // Fetches all offers from table to 
-            $query="SELECT * FROM offers WHERE toUserid = '$viewerID';";
-            $qresult = mysqli_query($connection, $query);
-            while($row = mysql_fetch_assoc($qresult, MYSQLI_ASSOC)){
-                $listingid = $row['id'];
-                $title = $row['title'];
-            }
-        ?>
+        <div id = "useroffers">
+            <h1>Your Offers:</h1>
+            <!-- Small message telling user to delete offers where appropriate.  Prevents need for user-user messaging -->
+            <p id = "acceptmsg">To accept an offer, contact the other party!  Please delete the offer once you have contacted them.</p>
+            <?php
+                $counter = 0;
+                // Fetches all offers from table to display sequentially
+                $query="SELECT * FROM offers WHERE toUserid = '$viewerID';";
+                $qresult = mysqli_query($connection, $query);
+                
+                // Prints results from row fetch and prints sequentially
+                while($row = mysql_fetch_assoc($qresult, MYSQLI_ASSOC)){
+                    $counter++;
+                    $offerid = $row['id'];
+                    $listingid = $row['listingid'];
+                    $title = $row['title'];
+                    $offerer = $row['fromUserid'];
+                    $contact = $row['contact'];
+                    $offerdesc = $row['offerdesc'];
+                    echo '<h2> Offer '.$counter.':</h2><br>';
+                    echo '<h3><a href = "Listing.php?whichListing='.$listingid.' ">'.$title.'<a/></h3><br>';
+                    echo '<h3>Offer made by: '. $offerer . ', Contact information: ' . $contact . '</h3><br>';
+                    echo '<h4><b> Offer Description: <b>' . $offerdesc . '</h4><br>';
+                    // Prints out button that allows user to delete offer corresponding with offerid.
+                    echo '<input type = \"button\" id=\"delbtn' . $counter . '\" value =\"Delete Offer\" onclick=\"deleteoffer.php?offerid=' . $offerid .'\">';
+                }
+            ?>
+        </div>
     </body>
 </html>

@@ -51,7 +51,7 @@ if(isset($_POST['postUserid'])){
             while($row = mysqli_fetch_array($qresult, MYSQLI_ASSOC)){
                 $listingid = $row['id'];
                 $title = $row['title'];
-                echo '<h1><a href = "Listing.php?whichListing='.$listingid.' ">'.$title.'<a/></h1>'; // I want to somehow pass this listing's Id here
+                echo '<h3><a href = "Listing.php?whichListing='.$listingid.' ">'.$title.'<a/></h3><br>';
             }
         ?>
 
