@@ -4,6 +4,19 @@ body {
     align-items:center;
 }
 
+input, label {
+    display:block;
+    font-family: Roboto, sans-serif;
+}
+
+input {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    height: 30px;
+    width: 100%;
+    border: 1px solid black;
+}
+
 .headerButton {
     border: none;
     width: 50%;
@@ -20,6 +33,11 @@ body {
 
 .signup {
     display: none;
+}
+
+#submit {
+    background-color: #BBDEFB;
+    height: 40px;
 }
 
 #loginButton {

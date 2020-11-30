@@ -7,7 +7,10 @@
     <title>Login Form</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="scripts.js" async></script>
-    <?php include_once("components/imports.php") ?>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="loginBox">
