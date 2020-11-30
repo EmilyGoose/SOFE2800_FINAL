@@ -47,7 +47,7 @@ if (mysqli_connect_errno() || $connection === false){
                     echo '<h3>Offer made by: '. $offerer . ', Contact information: ' . $contact . '</h3><br>';
                     echo '<h4><b> Offer Description: <b>' . $offerdesc . '</h4><br>';
                     // Prints out button that allows user to delete offer corresponding with offerid.
-                    echo '<input type = \"button\" id=\"delbtn' . $counter . '\" value =\"Delete Offer\" onclick=\"deleteoffer.php?offerid=' . $offerid .'\">';
+                    echo '<input type = \"button\" class=\"delbtn\" value =\"Delete Offer\" onclick=\"deleteoffer.php?offerid=' . $offerid .'\">';
                 }
             ?>
         </div>

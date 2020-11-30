@@ -2,6 +2,7 @@
 session_start();
 // Checks if user is logged in.
 include 'checkSessionID.php';
+$viewerID = $_SESSION['sessionID'];
 
 $iniConfig = parse_ini_file("php.ini");
 
@@ -46,12 +47,19 @@ if(isset($_POST['postUserid'])){
         <h1>Listings: </h1>
         <!--Creates series of links for every listing with the listing id in the link so that they can be received with GET in listing.php -->
         <?php
+            $counter = 0;
             $query="SELECT * FROM listing WHERE userid= '$userid'";
             $qresult = mysqli_query($connection, $query);
             while($row = mysqli_fetch_array($qresult, MYSQLI_ASSOC)){
                 $listingid = $row['id'];
                 $title = $row['title'];
                 echo '<h3><a href = "Listing.php?whichListing='.$listingid.' ">'.$title.'<a/></h3><br>';
+
+                // Shows delete listing button if the profilebelongs to the viewer
+                if ($userid == $viewerID){
+                    echo '<input type = \"button\" class=\"delbtn\" value =\"Delete Offer\" onclick=\"deletelisting.php?listingid=' . $listingid .'\">';
+                }
+                
             }
         ?>
 
