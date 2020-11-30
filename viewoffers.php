@@ -26,13 +26,18 @@ if (mysqli_connect_errno() || $connection === false){
         <div id = "useroffers">
             <h1>Your Offers:</h1>
             <!-- Small message telling user to delete offers where appropriate.  Prevents need for user-user messaging -->
-            <p id = "acceptmsg">To accept an offer, contact the other party!  Please delete the offer once you have contacted them.</p>
             <?php
                 $counter = 0;
                 // Fetches all offers from table to display sequentially
                 $query="SELECT * FROM offers WHERE toUserid = '$viewerID';";
                 $qresult = mysqli_query($connection, $query);
-                
+
+                if(mysqli_num_rows($qresult) == 0){
+                    echo '<h2> You have no offers!</h2>';
+                }
+                else{
+                    echo '<p id = "acceptmsg">To accept an offer, contact the other party!  Please delete the offer once you have contacted them.</p>';
+                }
                 // Prints results from row fetch and prints sequentially
                 while($row = mysql_fetch_assoc($qresult, MYSQLI_ASSOC)){
                     $counter++;
