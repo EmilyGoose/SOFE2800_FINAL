@@ -1,14 +1,33 @@
+body {
+    font-family: Roboto, sans-serif;
+}
+
 input, label {
     display:block;
     font-family: Roboto, sans-serif;
 }
 
-input {
+input, textarea {
     margin-top: 5px;
     margin-bottom: 20px;
-    height: 30px;
     width: 100%;
     border: 1px solid black;
+}
+
+input {
+    height: 30px;
+}
+
+textarea {
+    resize: none;
+}
+
+.formHeader {
+    font-family: Montserrat, sans-serif;
+}
+
+#formBody {
+    margin: 20px;
 }
 
 #submit {

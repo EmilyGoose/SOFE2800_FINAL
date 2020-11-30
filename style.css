@@ -14,10 +14,6 @@ body {
     cursor: pointer;
 }
 
-.formHeader {
-    font-family: Montserrat, sans-serif;
-}
-
 .signup {
     display: none;
 }
@@ -34,10 +30,6 @@ body {
 #mode {
     visibility: hidden;
     height: 5px;
-}
-
-#formBody {
-    margin: 20px;
 }
 
 #loginBox {
