@@ -47,7 +47,7 @@ if (mysqli_connect_errno() || $connection === false){
                     $contact = $row['contact'];
                     $offerdesc = $row['offerdesc'];
 
-                    $query="SELECT * FROM offer WHERE id = '$listingid';";
+                    $query="SELECT * FROM offers WHERE id = '$listingid';";
                     $qresult = mysqli_query($connection, $query);
                     $title = $row['title'];
 
