@@ -50,16 +50,17 @@ if(isset($_POST['postUserid'])){
             $counter = 0;
             $query="SELECT * FROM listing WHERE userid= '$userid'";
             $qresult = mysqli_query($connection, $query);
+
             while($row = mysqli_fetch_array($qresult, MYSQLI_ASSOC)){
                 $listingid = $row['id'];
                 $title = $row['title'];
-                echo '<h3><a href = "Listing.php?whichListing='.$listingid.' ">'.$title.'<a/></h3><br>';
 
-                // Shows delete listing button if the profilebelongs to the viewer
+                echo '<h3><a href = "Listing.php?whichListing='.$listingid.' \">'.$title.'</a></h3>';
+
+                // Shows delete listing button if the profile belongs to the viewer
                 if ($userid == $viewerID){
-                    echo '<input type = \"button\" class=\"delbtn\" value =\"Delete Offer\" onclick=\"deletelisting.php?listingid=' . $listingid .'\">';
+                    echo '<input type="button" class="delbtn" value ="Delete Offer" onclick="deletelisting.php?listingid='.$listingid.'"><br>';
                 }
-                
             }
         ?>
 
