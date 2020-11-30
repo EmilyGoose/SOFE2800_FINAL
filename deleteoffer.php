@@ -19,7 +19,7 @@
         $query="DELETE * FROM offers WHERE id= '$offerid' AND toUserid = '$viewerID'";
         $qresult = mysqli_query($connection, $query);
         
-        // Print out success message (I am not sure if i have checked this correctly??)
+        // Print out success message (I am not sure if my condition is correct?)
         if ($qresult){
             echo '<h1> Offer deleted successfully. </h1><br>';
             echo 'echo "<a href=\"viewoffers.php\">Click here to return to your offers</a>" ."<br>"';
