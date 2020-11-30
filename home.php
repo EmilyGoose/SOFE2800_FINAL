@@ -12,7 +12,7 @@ echo "<a href=\"userProfile.php\">Click here to go to your userProfile.php page<
 <body>
     <div>
         <form id="userLinks" method="post" action="userProfile.php">
-            <input type="text" name="userProfile" value="<?php echo $_SESSION['sessionID'] ?>" hidden>
+            <input type="text" name="postUserid" value="<?php echo $_SESSION['sessionID'] ?>" hidden>
             <button onclick="form['userLinks'].submit()" value="Your Profile">Your profile</button>
         </form>
     </div>

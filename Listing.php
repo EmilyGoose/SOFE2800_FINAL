@@ -23,8 +23,8 @@
 
 
     // Gets id of listing to be displayed from post stream <- NEEDS TO BE PARAM REQUEST FOR LISTING ID
-    if(isset($_POST['whichListing'])){
-        $listingid = $_POST['whichListing'];
+    if(isset($_GET['whichListing'])){
+        $listingid = $_GET['whichListing'];
         $query="SELECT * FROM listing WHERE id= '$listingid'";
         $qresult = $connection->query($query);
 
