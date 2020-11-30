@@ -55,7 +55,7 @@ if(isset($_POST['postUserid'])){
                 $listingid = $row['id'];
                 $title = $row['title'];
 
-                echo '<h3><a href = "Listing.php?whichListing='.$listingid.' \">'.$title.'</a></h3>';
+                echo '<h3><a href = "Listing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
 
                 // Shows delete listing button if the profile belongs to the viewer
                 if ($userid == $viewerID){
