@@ -34,3 +34,8 @@ textarea {
     background-color: #BBDEFB;
     height: 40px;
 }
+
+img {
+    max-height: 300px;
+    max-width: 300px;
+ }

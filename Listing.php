@@ -44,6 +44,7 @@
         $postingUsername = $row['username'];
             
     }
+include ('header.php');
 ?>
 <html>
     <head>

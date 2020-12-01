@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $iniConfig = parse_ini_file("php.ini");
 
     //Establishing server connection
@@ -16,16 +17,20 @@
 <html>
 <head>
     <title>Marketplace Home</title>
+    <link rel="stylesheet" type="text/css" href="style/global.css">
 </head>
 <body>
     <div class = "homeheader">
         <!-- Put the header in here -->
-        <a href="index.php">Click here to go to index.php</a>
+        <?php include('header.php')?>
+        <!--old header links
         <div>
+            <a href="index.php">Click here to go to index.php</a>
             <a href="userProfile.php?user=<?php echo $_SESSION['sessionID'] ?>">Click here to go to your profile page</a>
             <br>
             <a href="makeListing.php">Click here to go to Make a Listing</a>
         </div>
+        -->
     </div>
     <div class = "tiledlistings">
         <?php

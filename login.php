@@ -30,7 +30,7 @@
             -->
 
             <label for="username" class="login">Username</label>
-            <input type="text" id="username" class="login" name="username">
+            <input type="text" id="username" class="login" name="username" required>
 
             <!--
             <label for="email">Email</label>
