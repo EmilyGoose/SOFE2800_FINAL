@@ -34,31 +34,32 @@ if (mysqli_connect_errno() || $connection === false){
                 if(mysqli_num_rows($qresult) == 0){
                     echo '<h2 id = "acceptmsg">You have no offers!</h2>';
                 }
-                else{
+                else {
                     echo '<p id = "acceptmsg">To accept an offer, contact the other party!  Please delete the offer once you have contacted them.</p>';
-                }
-                
-                // Prints results from row fetch and prints sequentially
-            while($row = mysqli_fetch_array($qresult, MYSQLI_ASSOC)){
-                    $counter++;
-                    $offerid = $row['id'];
-                    $listingid = $row['listingid'];
-                    $offerer = $row['fromUserid'];
-                    $contact = $row['contact'];
-                    $offerdesc = $row['offerdesc'];
 
-                    // Obtains title of the post from the listing table.
-                    $query="SELECT * FROM listing WHERE id = '$listingid';";
-                    $result = mysqli_query($connection, $query);
-                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                    $title = $row['title'];
 
-                    echo '<h2> Offer '.$counter.':</h2><br>';
-                    echo '<h3><a href = "Listing.php?whichListing='.$listingid.' ">'.$title.'<a/></h3><br>';
-                    echo '<h3>Offer made by: '. $offerer . ', Contact information: ' . $contact . '</h3><br>';
-                    echo '<h4><b> Offer Description: <b>' . $offerdesc . '</h4><br>';
-                    // Prints out button that allows user to delete offer corresponding with offerid. (WORRIED ABOUT SECURITY HERE?)
-                    echo '<input type = "button" class="delbtn" value ="Delete Offer" onclick="deleteoffer.php?offerid=' . $offerid .'">';
+                    // Prints results from row fetch and prints sequentially
+                    while ($row = mysqli_fetch_array($qresult, MYSQLI_ASSOC)) {
+                        $counter++;
+                        $offerid = $row['id'];
+                        $listingid = $row['listingid'];
+                        $offerer = $row['fromUserid'];
+                        $contact = $row['contact'];
+                        $offerdesc = $row['offerdesc'];
+
+                        // Obtains title of the post from the listing table.
+                        $query = "SELECT * FROM listing WHERE id = '$listingid';";
+                        $result = mysqli_query($connection, $query);
+                        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                        $title = $row['title'];
+
+                        echo '<h2> Offer ' . $counter . ':</h2><br>';
+                        echo '<h3><a href = "Listing.php?whichListing=' . $listingid . ' ">' . $title . '<a/></h3><br>';
+                        echo '<h3>Offer made by: ' . $offerer . ', Contact information: ' . $contact . '</h3><br>';
+                        echo '<h4><b> Offer Description: <b>' . $offerdesc . '</h4><br>';
+                        // Prints out button that allows user to delete offer corresponding with offerid. (WORRIED ABOUT SECURITY HERE?)
+                        echo '<input type = "button" class="delbtn" value ="Delete Offer" onclick="deleteoffer.php?offerid=' . $offerid . '">';
+                    }
                 }
             ?>
         </div>
