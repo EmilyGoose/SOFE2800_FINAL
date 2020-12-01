@@ -37,6 +37,9 @@ if(isset($_GET['user'])){
     <title>User: <?php echo 'User Profile: '.$username  ?></title>
 </head>
 <body>
+    <div class ="homeheader">
+        <!-- Header code goes here -->
+    </div>
 
     <div id="user information">
         <h1><?php echo $username  ?></h1>
@@ -47,7 +50,7 @@ if(isset($_GET['user'])){
         <!--Creates series of links for every listing with the listing id in the link so that they can be received with GET in listing.php -->
         <?php
             $counter = 0;
-            $query="SELECT * FROM listing WHERE userid= '$userid'";
+            $query="SELECT * FROM listing WHERE userid= '$userid';";
             $qresult = mysqli_query($connection, $query);
 
             while($row = mysqli_fetch_array($qresult, MYSQLI_ASSOC)){

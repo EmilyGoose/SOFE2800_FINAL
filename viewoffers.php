@@ -20,9 +20,12 @@ if (mysqli_connect_errno() || $connection === false){
 ?>
 <html>
     <head>
-        <title></title>
+        <title>View Your Offers</title>
     </head>
     <body>
+        <div class ="homeheader">
+            <!-- Header code goes here -->
+        </div>
         <div id = "useroffers">
             <h1>Your Offers:</h1>
             <?php

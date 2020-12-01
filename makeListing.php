@@ -38,7 +38,7 @@ $userid = $_SESSION["sessionID"];
         <label for="title">Title your listing: </label>
         <input type="text" name="title" required>
         <br>
-        <label for="description">Describe your offer: </label>
+        <label for="description">Describe your item: </label>
         <textarea name="description" id="" cols="30" rows="10" required>Enter a description of your listing here.</textarea>
         <br>
 
