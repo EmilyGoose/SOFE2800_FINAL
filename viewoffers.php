@@ -50,6 +50,7 @@ if (mysqli_connect_errno() || $connection === false){
                     // Obtains title of the post from the listing table.
                     $query="SELECT * FROM listing WHERE id = '$listingid';";
                     $result = mysqli_query($connection, $query);
+                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     $title = $row['title'];
 
                     echo '<h2> Offer '.$counter.':</h2><br>';
