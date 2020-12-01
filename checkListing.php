@@ -33,8 +33,13 @@ if (mysqli_query($conn, $sql) -> num_rows >0){
     $listingExists = false;
 }
 if (!$listingExists) {
-    $sql = "INSERT INTO listing (title, description , image,userid) VALUES ('$title','$description','$image','$userid');";
+    $title = $conn->real_escape_string($title);
+    $description = $conn->real_escape_string($description);
+    $image = $conn->real_escape_string($image);
+    $sql = "INSERT INTO listing (title, description, image,userid) VALUES ('$title','$description','$image','$userid');";
+
     $result = mysqli_query($conn, $sql);
+
     if ($result) {
         echo 'Listing posted, please wait to receive offers';
     }else{

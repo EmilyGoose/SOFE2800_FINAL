@@ -1,51 +1,39 @@
+<?php
+$iniConfig = parse_ini_file("php.ini");
 
+//Establishing server connection
+$servername = $iniConfig["ip"];
+$dbusername = $iniConfig["user"];
+$password = $iniConfig["password"];
+$dbname = $iniConfig["database"];
+$connection = mysqli_connect ($servername, $dbusername, $password, $dbname);
+
+// Output error message if connection unsuccessful.
+if (mysqli_connect_errno() || $connection === false){
+    die("Database connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
+}
+
+$viewerid= $_SESSION["sessionID"];
+$query="SELECT username FROM user WHERE id= '$viewerid';";
+$qresult = mysqli_query($connection,$query);
+
+// Obtains the data contained for the matching table row using mysqli.
+$row = mysqli_fetch_array($qresult, MYSQLI_ASSOC);
+$username = $row['username'];
+?>
 <link rel="stylesheet" type="text/css" href="style/headerStyle.css">
-<body>
+<h1 class="headerUsername">Welcome: <?php echo $username?></h1>
 <div class="header" id="navbar">
-    <!--<button onclick="window.location.href=;">
-    Click here to go to index.php
-    </button>
-    <button onclick="window.location.href='';">
-        Click here to go to your profile page
-    </button>
-    <button onclick="window.location.href='makeListing.php';">
-        Click here to go to Make a Listing
-    </button>-->
     <nav class="header">
-        <a href="index.php">Index</a>
+        <a href="index.php">Index/Logout</a>
+        <a href="home.php">Home</a>
         <a href="userProfile.php?user=<?php echo $_SESSION['sessionID']?>">Your Profile</a>
         <a href="makeListing.php">Make a Listing</a>
     </nav>
 </div>
 
+<!--needed for stopping the snapping motion-->
 <div class="content">
-    <!--<p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-    <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
--->
 </div>
+<script type="text/javascript" src="headerScripts.js" ></script>
 
-<script>
-    // When the user scrolls the page, execute myFunction
-    window.onscroll = function() {myFunction()};
-
-    // Get the navbar
-    var navbar = document.getElementById("navbar");
-
-    // Get the offset position of the navbar
-    var sticky = navbar.offsetTop;
-
-    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-    function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
-    }
-</script>
-
-</body>
-</html>

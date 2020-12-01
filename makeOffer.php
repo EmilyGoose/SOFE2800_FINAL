@@ -50,6 +50,7 @@ $postingUsername = $row['username'];
     <title>Make an offer: <?php echo $listingTitle ?></title>
 </head>
 <body>
+<?php include('header.php')?>
     <h1>Make an offer on <?php echo $listingTitle ?></h1>
     <form action="checkOffer.php" method="post">
         <input type="text" name="fromUserid" value="<?php echo $_SESSION['sessionID'] ?>" hidden>

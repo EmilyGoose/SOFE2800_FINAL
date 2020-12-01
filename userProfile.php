@@ -27,19 +27,13 @@ if(isset($_GET['user'])){
 
 }
 
-//link to get back to login page
-    echo "<a href=\"index.php\">Click here to go to index.php</a>" ."<br>";
-
-
 ?>
 <html>
 <head>
     <title>User: <?php echo 'User Profile: '.$username  ?></title>
 </head>
 <body>
-    <div class ="homeheader">
-        <!-- Header code goes here -->
-    </div>
+<?php include('header.php')?>
 
     <div id="user information">
         <h1><?php echo $username  ?></h1>

@@ -12,7 +12,8 @@
     // Output error message if connection unsuccessful.
     if (mysqli_connect_errno() || $connection === false){
         die("Database connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
-    }  
+    }
+
 ?>
 <html>
 <head>
@@ -52,11 +53,12 @@
                     $username = $row['username'];
                     
                     // Prints each listing in it's own div for flexboxes
-                    echo '<div class ="listingtile">';
-                    echo '<img src="'. $image .'" alt="listing">';
-                    echo '<h3><a href = "Listing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
+                    echo '<div class ="listingTile">';
+                    echo '<img class="listingImage" src="'. $image .'" alt="listing">';
+                    echo '<div class="listingText">';
+                    echo '<h3><a  href = "Listing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
                     echo '<h4>Posted By: <a href = userProfile.php?user=' . $userid . '">'.$username.'</a></h4>';
-                    echo '</div>';
+                    echo '</div></div>';
                 }
             }
             else{

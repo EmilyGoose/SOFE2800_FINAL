@@ -44,7 +44,6 @@
         $postingUsername = $row['username'];
             
     }
-include ('header.php');
 ?>
 <html>
     <head>
@@ -59,28 +58,28 @@ include ('header.php');
         </script>
     </head>
     <body>
-        
-        <div id = "postHeader">
-            <h1><?php echo $title ?></h1>
-            <h3>Posted By: 
-            <?php 
-                echo $postingUsername .'<a href="userProfile.php?user=' . $userid . '">Click here to vist profile</a></h3>';
-            ?>
-        </div>
-        <div id="imgdisplay">
-            <img src="<?php echo $image ?>" alt="poster's image">
-        </div>
-        <div id= "postbody">
-            <h3>Item Description:</h3>
-            <h4><?php echo $description ?></h4>
-        </div>
+    <?php include('header.php')?>
+            <div id = "postHeader">
+                <h1><?php echo $title ?></h1>
+                <h3>Posted By:
+                <?php
+                    echo  '<a href="userProfile.php?user=' . $userid . '">'.$postingUsername.'</a></h3>';
+                ?>
+            </div>
+            <div id="imgdisplay">
+                <img src="<?php echo $image ?>" alt="poster's image">
+            </div>
+            <div id= "postbody">
+                <h3>Item Description:</h3>
+                <h4><?php echo $description ?></h4>
+            </div>
 
-        <!-- Hides button (adds hidden class) if user viewing is same as posting user -->
-        <div id = "offer <?php if ($userid == $viewerid ) echo 'hidden'?>">
-            <form name="offer" action="makeOffer.php" method="post">
-                <input type="text" name="listingid" value="<?php echo $listingid; ?>" hidden>
-                <input type = "button"  onclick="forms['offer'].submit()" id = "offerbtn" value = "Make an Offer!">
-            </form>
-        </div>
+            <!-- Hides button (adds hidden class) if user viewing is same as posting user -->
+            <div id = "offer" <?php if ($userid == $viewerid ) echo 'hidden'?>>
+                <form name="offer" action="makeOffer.php" method="post">
+                    <input type="text" name="listingid" value="<?php echo $listingid; ?>" hidden>
+                    <input type = "button"  onclick="forms['offer'].submit()" id = "offerbtn" value = "Make an Offer!">
+                </form>
+            </div>
     </body>
 </html>

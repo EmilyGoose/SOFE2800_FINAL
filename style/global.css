@@ -39,3 +39,31 @@ img {
     max-height: 300px;
     max-width: 300px;
  }
+
+/*--Home Listing Tiles--*/
+.listingTile{
+    float: left;
+
+    background-color: #90CAF9;
+    width: 19%;
+    height:450px;
+
+    border-style:groove;
+    border-color: #BBDEFB;
+    border-radius: 10px;
+
+    display:flex;
+    flex-direction: column;
+
+}
+
+.listingImage{
+    background-color: black;
+    border-style: inset;
+    border-color: darkgrey;
+}
+
+.listingText{
+    background-color: whitesmoke;
+   margin-top:auto;
+}

@@ -31,6 +31,7 @@ $userid = $_SESSION["sessionID"];
     <title>Make a listing</title>
 </head>
 <body>
+<?php include('header.php')?>
     <h1>Make a listing</h1>
     <form action="checkListing.php" method="post">
         <input type="text" name="userid" value="<?php echo $userid ?>" hidden>
