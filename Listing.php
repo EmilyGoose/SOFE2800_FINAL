@@ -48,7 +48,7 @@
 <html>
     <head>
         <title> <?php echo 'Listing: '.$title ?> </title>
-
+        <?php include_once("components/imports.php"); ?>
         <script type = "text/javascript">
             // Listener for button to redirect to offer page if clicked
             document.getElementById("offerbtn").onclick = function ()

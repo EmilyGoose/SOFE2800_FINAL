@@ -5,12 +5,9 @@ $viewerID = $_SESSION['sessionID'];
 
 $iniConfig = parse_ini_file("php.ini");
 
-//Establishing server connection
-$servername = $iniConfig["ip"];
-$dbusername = $iniConfig["user"];
-$password = $iniConfig["password"];
-$dbname = $iniConfig["database"];
-$connection = mysqli_connect ($servername, $dbusername, $password, $dbname);
+//Establishing connection
+include_once 'components/dbConnection.php';
+$connection = getConnection();
 
 // Output error message if connection unsuccessful.
 if (mysqli_connect_errno() || $connection === false){
@@ -21,12 +18,12 @@ if (mysqli_connect_errno() || $connection === false){
 <html>
     <head>
         <title>View Your Offers</title>
+        <?php include_once("components/imports.php"); ?>
     </head>
     <body>
-        <div class ="homeheader">
-            <!-- Header code goes here -->
-        </div>
-        <div id = "useroffers">
+    <?php include('header.php')?>
+
+    <div id = "useroffers">
             <h1>Your Offers:</h1>
             <?php
                 $counter = 0;
@@ -56,9 +53,15 @@ if (mysqli_connect_errno() || $connection === false){
                         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         $title = $row['title'];
 
+                        // Obtains the name of the offer from the user table.
+                        $query = "SELECT * FROM user WHERE id = '$offerer';";
+                        $result = mysqli_query($connection, $query);
+                        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                        $offerName = $row['username'];
+
                         echo '<h2> Offer ' . $counter . ':</h2><br>';
                         echo '<h3><a href = "Listing.php?whichListing=' . $listingid . ' ">' . $title . '<a/></h3><br>';
-                        echo '<h3>Offer made by: ' . $offerer . ', Contact information: ' . $contact . '</h3><br>';
+                        echo '<h3>Offer made by: ' . $offerName . '</h3><h3> Contact information: ' . $contact . '</h3><br>';
                         echo '<h4><b> Offer Description: <b>' . $offerdesc . '</h4><br>';
                         // Prints out button that allows user to delete offer corresponding with offerid. (WORRIED ABOUT SECURITY HERE?)
                         echo '<input type = "button" class="delbtn" value ="Delete Offer" onclick="deleteoffer.php?offerid=' . $offerid . '">';

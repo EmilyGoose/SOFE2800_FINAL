@@ -7,11 +7,8 @@ $viewerID = $_SESSION['sessionID'];
 $iniConfig = parse_ini_file("php.ini");
 
 //Establishing connection
-$servername = $iniConfig["ip"];
-$dbusername = $iniConfig["user"];
-$password = $iniConfig["password"];
-$dbname = $iniConfig["database"];
-$connection = mysqli_connect($servername, $dbusername, $password, $dbname);
+include_once 'components/dbConnection.php';
+$connection = getConnection();
 
 // Obtain's the userid of the user to be loaded from link userProfile.php?user=#
 if(isset($_GET['user'])){
