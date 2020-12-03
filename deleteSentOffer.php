@@ -16,19 +16,19 @@
     if(isset($_GET['offerid'])){
         $offerid = $_GET['offerid'];
 
-        // Makes sure the offer to be deleted is the same as the passed id and the toUser is the same as the viewing user.
-        $query="DELETE * FROM offer WHERE id= '$offerid' AND toUserid = '$viewerID';";
+        // Makes sure the offer to be deleted is the same as the passed id and the fromUser is the same as the viewing user.
+        $query="DELETE * FROM offer WHERE id= '$offerid' AND fromUserid = '$viewerID';";
         $qresult = mysqli_query($connection, $query);
         
         // Print out success message (I am not sure if my condition is correct?)
         if ($qresult){
-            echo '<h1> Offer deleted successfully. </h1>';
-            echo '<a href="viewoffers.php">Click here to return to your received offers</a>';
+            echo '<h1> Your offer was deleted successfully. </h1>';
+            echo '<a href="viewSentOffers.php">Click here to return to your sentoffers</a>';
         }
         // Print out could not complete message
         else{
-            echo '<h1>Offer was not deleted successfully.</h1><';
-            echo '<a href="viewoffers.php">Click here to return to your received offers</a>';
+            echo '<h1>Your offer was not deleted successfully.</h1><';
+            echo '<a href="viewSentOffers.php">Click here to return to your sent offers</a>';
         }
     }
 ?>

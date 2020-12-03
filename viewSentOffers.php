@@ -28,14 +28,14 @@ if (mysqli_connect_errno() || $connection === false){
             <?php
                 $counter = 0;
                 // Fetches all offers from table to display sequentially
-                $query="SELECT * FROM offer WHERE toUserid = '$viewerID';";
+                $query="SELECT * FROM offer WHERE fromUserid = '$viewerID';";
                 $qresult = mysqli_query($connection, $query);
 
                 if(mysqli_num_rows($qresult) == 0){
-                    echo '<h2 id = "acceptmsg">You have no offers!</h2>';
+                    echo '<h2 id = "acceptmsg">You have made no offers!</h2>';
                 }
                 else {
-                    echo '<p id = "acceptmsg">To accept an offer, contact the other party!  Please delete the offer once you have contacted them.</p>';
+                    echo '<p id = "acceptmsg">The other party will contact you to accept your offer, or delete it.  Please be patient!</p>';
 
 
                     // Prints results from row fetch and prints sequentially
@@ -43,9 +43,9 @@ if (mysqli_connect_errno() || $connection === false){
                         $counter++;
                         $offerid = $row['id'];
                         $listingid = $row['listingid'];
-                        $offerer = $row['fromUserid'];
                         $contact = $row['contact'];
                         $offerdesc = $row['offerdesc'];
+                        $posterid = $row['toUserid'];
 
                         // Obtains title of the post from the listing table.
                         $query = "SELECT * FROM listing WHERE id = '$listingid';";
@@ -53,18 +53,19 @@ if (mysqli_connect_errno() || $connection === false){
                         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         $title = $row['title'];
 
-                        // Obtains the name of the offerer from the user table.
-                        $query = "SELECT * FROM user WHERE id = '$offerer';";
+                        // Obtains the name of the poster from the user table.
+                        $query = "SELECT * FROM user WHERE id = '$posterid';";
                         $result = mysqli_query($connection, $query);
                         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                        $offerName = $row['username'];
+                        $posterName = $row['username'];
+
 
                         echo '<h2> Offer ' . $counter . ':</h2>';
                         echo '<h3><a href = "Listing.php?whichListing=' . $listingid . ' ">' . $title . '</a></h3>';
-                        echo '<h3>Offer made by: ' . $offerName . '</h3><h3> Contact information: ' . $contact . '</h3>';
-                        echo '<h4><b> Offer Description: <b>' . $offerdesc . '</h4>';
+                        echo '<h3><a href="userProfile.php?user=' . $posterid . '">' . $posterName .'</a></h3>';
+                        echo '<h4><b> What you offered: <b>' . $offerdesc . '</h4><br>';
                         // Prints out button that allows user to delete offer corresponding with offerid.
-                        echo '<input type = "button" class="delbtn" value ="Delete Offer" onclick="deleteoffer.php?offerid=' . $offerid . '">';
+                        echo '<input type = "button" class="delbtn" value ="Delete My Offer" onclick="deleteSentOffer.php?offerid=' . $offerid . '">';
                     }
                 }
             ?>
