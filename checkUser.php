@@ -1,6 +1,6 @@
 <?php
 // Include and call function to connect to db
-include_once 'components/imports.php';
+include_once 'components/dbConnection.php';
 $conn = getConnection();
 
 // Check connection

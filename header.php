@@ -1,21 +1,17 @@
 <?php
 $iniConfig = parse_ini_file("php.ini");
 
-//Establishing server connection
-$servername = $iniConfig["ip"];
-$dbusername = $iniConfig["user"];
-$password = $iniConfig["password"];
-$dbname = $iniConfig["database"];
-$connection = mysqli_connect ($servername, $dbusername, $password, $dbname);
+include_once 'components/dbConnection.php';
+$conn = getConnection();
 
 // Output error message if connection unsuccessful.
-if (mysqli_connect_errno() || $connection === false){
+if (mysqli_connect_errno() || $conn === false){
     die("Database connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
 }
 
 $viewerid= $_SESSION["sessionID"];
 $query="SELECT username FROM user WHERE id= '$viewerid';";
-$qresult = mysqli_query($connection,$query);
+$qresult = mysqli_query($conn,$query);
 
 // Obtains the data contained for the matching table row using mysqli.
 $row = mysqli_fetch_array($qresult, MYSQLI_ASSOC);
