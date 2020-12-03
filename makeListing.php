@@ -35,7 +35,7 @@ $userid = $_SESSION["sessionID"];
 <?php include('header.php')?>
     <h1>Make a listing</h1>
     <form action="checkListing.php" method="post">
-        <input type="text" name="userid" value="<?php echo $userid ?>" hidden>
+        <input type="text" name="userid" value="<?php echo $userid ?>" style="display: none">
 
         <label for="title">Title your listing: </label>
         <input type="text" name="title" required>
@@ -48,8 +48,6 @@ $userid = $_SESSION["sessionID"];
         <input type="text" name="image" required>
 
         <input type="submit">
-
-
 
     </form>
 </body>

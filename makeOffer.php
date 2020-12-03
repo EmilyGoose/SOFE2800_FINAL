@@ -42,14 +42,15 @@ $postingUsername = $row['username'];
 <html>
 <head>
     <title>Make an offer: <?php echo $listingTitle ?></title>
+    <?php include_once("components/imports.php"); ?>
 </head>
 <body>
 <?php include('header.php')?>
     <h1>Make an offer on <?php echo $listingTitle ?></h1>
     <form action="checkOffer.php" method="post">
-        <input type="text" name="fromUserid" value="<?php echo $_SESSION['sessionID'] ?>" hidden>
-        <input type="text" name="toUserid" value="<?php echo $userid ?>" hidden>
-        <input type="text" name="listingid" value="<?php echo $listingid ?>"hidden>
+        <input type="text" name="fromUserid" value="<?php echo $_SESSION['sessionID'] ?>" style="display: none">
+        <input type="text" name="toUserid" value="<?php echo $userid ?>" style="display: none">
+        <input type="text" name="listingid" value="<?php echo $listingid ?>"style="display: none">
 
         <label for="contact">Enter Contact Information</label>
         <input type="text" name="contact" value="">
