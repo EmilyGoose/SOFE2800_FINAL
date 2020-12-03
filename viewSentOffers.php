@@ -24,7 +24,7 @@ if (mysqli_connect_errno() || $connection === false){
     <?php include('header.php')?>
 
     <div id = "useroffers">
-            <h1>Your Offers:</h1>
+            <h1>Your Sent Offers:</h1>
             <?php
                 $counter = 0;
                 // Fetches all offers from table to display sequentially
@@ -65,7 +65,7 @@ if (mysqli_connect_errno() || $connection === false){
                         echo '<h3><a href="userProfile.php?user=' . $posterid . '">' . $posterName .'</a></h3>';
                         echo '<h4><b> What you offered: <b>' . $offerdesc . '</h4><br>';
                         // Prints out button that allows user to delete offer corresponding with offerid.
-                        echo '<input type = "button" class="delbtn" value ="Delete My Offer" onclick="deleteSentOffer.php?offerid=' . $offerid . '">';
+                        echo '<input type = "button" class="delbtn" value ="Delete My Offer" onclick="deleteSentOffer.php?offerid=' . $offerid . '"><br>';
                     }
                 }
             ?>
