@@ -1,13 +1,8 @@
 <?php
-// Get the php.ini file with the db config
-$iniConfig = parse_ini_file("php.ini");
 
-$servername = $iniConfig["ip"];
-$username = $iniConfig["user"];
-$password = $iniConfig["password"];
-$database = $iniConfig["database"];;
-// Create connection
-$conn = mysqli_connect($servername, $username, $password,$database);
+// Include and call function to connect to db
+include_once 'components/imports.php';
+$conn = getConnection();
 
 // Check connection
 if (!$conn) {
@@ -17,6 +12,7 @@ if (!$conn) {
 echo "<a href=\"index.php\">Click here to go to index.php</a>" ."<br>";
 
 session_start();
+
 //echo "session id is: ". $_SESSION['sessionID']."<br>";
 
 // Get post request variables

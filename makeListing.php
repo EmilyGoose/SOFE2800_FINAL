@@ -29,6 +29,7 @@ $userid = $_SESSION["sessionID"];
 <html>
 <head>
     <title>Make a listing</title>
+    <?php include_once("components/imports.php"); ?>
 </head>
 <body>
 <?php include('header.php')?>
