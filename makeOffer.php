@@ -8,8 +8,6 @@ $conn = getConnection();
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-//link to get back to index page
-echo "<a href=\"index.php\">Click here to go to index.php</a>" ."<br>";
 
 session_start();
 //echo "session id is: ". $_SESSION['sessionID']."<br>";
@@ -56,7 +54,7 @@ $postingUsername = $row['username'];
         <input type="text" name="contact" value="">
         <br>
         <label for="offerdesc">Describe your offer</label>
-        <textarea name="offerdesc" id="" cols="30" rows="10">Enter a description of your offer here.</textarea>
+        <textarea name="offerdesc" placeholder="Enter a description of your offer here." id="" cols="30" rows="10"></textarea>
         <input type="submit">
 
 

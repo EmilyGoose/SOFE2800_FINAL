@@ -20,14 +20,14 @@ if (isset($_GET['user'])) {
 
     // Obtains the data contained for the matching table row to retrieve username using mysqli.
     $row = mysqli_fetch_array($qresult, MYSQLI_ASSOC);
-    $username = $row['username'];
+    $viewingUser = $row['username'];
 
 }
 
 ?>
 <html>
 <head>
-    <title>User: <?php echo $username ?></title>
+    <title>User: <?php echo $viewingUser ?></title>
     <?php include_once("components/imports.php") ?>
 </head>
 <body>
@@ -35,7 +35,7 @@ if (isset($_GET['user'])) {
 <div class="pageContent">
 
     <div id="user information">
-        <h1>User Profile: <?php echo $username ?></h1>
+        <h1>User Profile: <?php echo $viewingUser ?></h1>
     </div>
 
     <div id="userlistings">
