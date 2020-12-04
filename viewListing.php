@@ -9,8 +9,6 @@
         $loggedIn = false;
     }
 
-    echo $loggedIn;
-
     // Get session user's id
     if ($loggedIn == true){
         $viewerid = $_SESSION['sessionID'];

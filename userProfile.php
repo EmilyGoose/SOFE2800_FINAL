@@ -53,7 +53,7 @@ if(isset($_GET['user'])){
 
                 // Shows delete listing button if the profile belongs to the viewer
                 if ($userid == $viewerID){
-                    echo '<input type="button" class="delbtn" value ="Delete Offer" onclick="deletelisting.php?listingid='.$listingid.'"><br>';
+                    echo '<input type="button" class="delbtn" value ="Delete Listing" onclick="window.location.href=\'deletelisting.php?listingid='.$listingid.'\'"><br>';
                 }
             }
         ?>
