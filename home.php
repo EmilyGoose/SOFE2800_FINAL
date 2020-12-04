@@ -56,7 +56,7 @@
                     echo '<div class ="listingTile">';
                     echo '<img class="listingImage" src="'. $image .'" alt="listing">';
                     echo '<div class="listingText">';
-                    echo '<h3><a  href = "Listing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
+                    echo '<h3><a  href = "viewListing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
                     echo '<h4>Posted By: <a href = userProfile.php?user=' . $userid . '">'.$username.'</a></h4>';
                     echo '</div></div>';
                 }

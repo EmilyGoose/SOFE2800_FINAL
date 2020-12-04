@@ -60,7 +60,7 @@ if (mysqli_connect_errno() || $connection === false){
                         $offerName = $row['username'];
 
                         echo '<h2> Offer ' . $counter . ':</h2>';
-                        echo '<h3><a href = "Listing.php?whichListing=' . $listingid . ' ">' . $title . '</a></h3>';
+                        echo '<h3><a href = "viewListing.php?whichListing=' . $listingid . ' ">' . $title . '</a></h3>';
                         echo '<h3>Offer made by: ' . $offerName . '</h3><h3> Contact information: ' . $contact . '</h3>';
                         echo '<h4><b> Offer Description: <b>' . $offerdesc . '</h4>';
                         // Prints out button that allows user to delete offer corresponding with offerid.

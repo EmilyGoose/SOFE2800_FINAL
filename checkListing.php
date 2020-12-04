@@ -15,7 +15,7 @@ session_start();
 
 //echo "session id is: ". $_SESSION['sessionID']."<br>";
 
-// Get post request variables
+// Get post request variables  
 $userid = $_POST["userid"];
 $title = $_POST["title"];
 $description = $_POST["description"];
@@ -37,7 +37,9 @@ if (!$listingExists) {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        echo 'Listing posted, please wait to receive offers';
+        // Listing successfully posted, redirect to the listing page
+        header("Location: viewListing.php?whichListing=" . $conn->insert_id);
+        die();
     }else{
         echo $result;
     }

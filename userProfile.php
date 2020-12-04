@@ -48,7 +48,7 @@ if(isset($_GET['user'])){
                 $listingid = $row['id'];
                 $title = $row['title'];
 
-                echo '<h3><a href = "Listing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
+                echo '<h3><a href = "viewListing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
 
                 // Shows delete listing button if the profile belongs to the viewer
                 if ($userid == $viewerID){

@@ -29,11 +29,15 @@ if (mysqli_query($conn, $sql) -> num_rows >0){
 }
 //if the offer was already made don't make another one
 if ($offerExists == true){
-    echo 'You already made an offer on this listing<br>Please wait for a response';
+    // Redirect back to form with error
+    header("Location: makeOffer.php");
+    die();
 } else{
     $sql = "INSERT INTO offer (fromUserid, toUserid, listingid,contact,offerdesc) VALUES ('$fromUserid','$toUserid','$listingid','$contact','$offerdesc');";
     mysqli_query($conn, $sql);
-    echo 'Offer made, please wait to be contacted';
+    // Redirect to sent offers
+    header("Location: viewSentOffers.php");
+    die();
 
 }
 
