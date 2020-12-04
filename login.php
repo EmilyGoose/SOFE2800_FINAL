@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" value="login" id="mode" name="mode" hidden>
 
             <input type="submit" id="submit">
-            <p style="color: red"><?php echo $error; ?></p>
+            <p class="error"><?php echo $error; ?></p>
         </form>
     </div>
 </div>

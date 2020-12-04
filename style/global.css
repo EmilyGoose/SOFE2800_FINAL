@@ -67,3 +67,7 @@ img {
     background-color: whitesmoke;
    margin-top:auto;
 }
+
+.error {
+    color: red;
+}
