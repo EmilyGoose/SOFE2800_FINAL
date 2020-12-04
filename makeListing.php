@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   required></textarea>
         <br>
 
-        <label for="image">paste a link to your image: </label>
+        <label for="image">Paste a link to your image: </label>
         <input type="text" name="image" required>
 
         <input type="submit">
