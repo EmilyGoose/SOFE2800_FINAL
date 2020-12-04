@@ -30,8 +30,18 @@ if (mysqli_connect_errno() || $connection === false) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['whichListing']) and isset($_POST['newText'])) {
     $newText = $_POST['newText'];
     $whichListing = $_POST['whichListing'];
-    $query = "UPDATE listing SET description='$newText' WHERE id= '$whichListing'";
-    $connection->query($query);
+
+    // Make sure we have the right user
+    $userQuery = "SELECT userId FROM listing WHERE id= '$whichListing'";
+    $result = $connection->query($userQuery);
+    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    // Only run the update for own listing
+    if ($row['userId'] == $viewerid) {
+        $query = "UPDATE listing SET description='$newText' WHERE id= '$whichListing'";
+        $connection->query($query);
+    }
+
+
 }
 
 
