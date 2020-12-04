@@ -39,10 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = mysqli_query($conn, $sql);
             // If nothing was returned, the password is wrong
             if ($result->num_rows == 0) {
-                echo "Wrong password!";
+                $error = "Wrong password!";
             } else {
                 while ($row = $result->fetch_assoc()) {
-                    echo "Welcome " . $row['username'] . "<br>";
                     $_SESSION['sessionID'] = $row['id'];
                     //echo "your User id is ".$row['id']."<br>" ."session id is the same: ".$_SESSION['sessionID'];
                     header("Location:home.php");
@@ -60,8 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Insert the new info into the database
             $sql = "INSERT INTO user (username, passwordHash) VALUES ('$username','$password');";
             mysqli_query($conn, $sql);
-            // Todo redirect to main page
-            $error = "Success! It worked! Yay!";
+            // Log the user in as the newly created user
+            $_SESSION['sessionID'] = $conn->insert_id;
+            header("Location:home.php");
         }
     }
 }
