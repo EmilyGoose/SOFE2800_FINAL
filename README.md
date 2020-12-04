@@ -1,4 +1,6 @@
 # SOFE 2800 Final Project
+# Group 30
+# Daniel Gohara Kamel, Misha Larionov, Jessica Leishman
 
 ## Database Config
 
