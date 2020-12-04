@@ -87,7 +87,7 @@ if (isset($_GET['whichListing']) or isset($_POST['whichListing'])) {
     </script>
 </head>
 <body>
-<?php include('header.php') ?>
+<?php include('components/header.php') ?>
 <div class="pageContent">
     <div id="postHeader">
         <h1><?php echo $title ?></h1>

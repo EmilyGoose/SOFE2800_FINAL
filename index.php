@@ -18,7 +18,7 @@
     <?php include_once("components/imports.php") ?>
 </head>
 <body>
-<?php include('header.php')?>
+<?php include('components/header.php')?>
     <h1 class="indexTitle">All Listings:</h1>
 
     <div class = "grid">

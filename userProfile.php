@@ -31,7 +31,7 @@ if (isset($_GET['user'])) {
     <?php include_once("components/imports.php") ?>
 </head>
 <body>
-<?php include('header.php') ?>
+<?php include('components/header.php') ?>
 <div class="pageContent">
 
     <div id="user information">

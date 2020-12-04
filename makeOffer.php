@@ -74,7 +74,7 @@ $postingUsername = $row['username'];
     <?php include_once("components/imports.php"); ?>
 </head>
 <body>
-<?php include('header.php')?>
+<?php include('components/header.php')?>
 <div class="pageContent">
     <h1>Make an offer on <?php echo $postingUsername ?>'s <?php echo $listingTitle ?></h1>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

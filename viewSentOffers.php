@@ -21,7 +21,7 @@ if (mysqli_connect_errno() || $connection === false) {
     <?php include_once("components/imports.php"); ?>
 </head>
 <body>
-<?php include('header.php') ?>
+<?php include('components/header.php') ?>
 <div class="pageContent">
     <div id="useroffers">
         <h1>Your Sent Offers:</h1>

@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include_once("components/imports.php"); ?>
 </head>
 <body>
-<?php include('header.php') ?>
+<?php include('components/header.php') ?>
 <div class="pageContent">
     <h1>Make a listing</h1>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

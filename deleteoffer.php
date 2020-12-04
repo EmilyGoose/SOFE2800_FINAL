@@ -12,7 +12,7 @@
         die("Database connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
     }
 
-    include('header.php');
+    include('components/header.php');
 
     if(isset($_GET['offerid'])){
         $offerid = $_GET['offerid'];
