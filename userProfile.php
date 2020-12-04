@@ -28,6 +28,7 @@ if(isset($_GET['user'])){
 <html>
 <head>
     <title>User: <?php echo 'User Profile: '.$username  ?></title>
+    <?php include_once("components/imports.php") ?>
 </head>
 <body>
 <?php include('header.php')?>

@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Login Form</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style/loginStyle.css">
     <script type="text/javascript" src="scripts.js" async></script>
     <?php include_once("components/imports.php") ?>
 </head>
