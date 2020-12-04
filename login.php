@@ -22,6 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //$lastName = $_POST["lastName"];
     $username = $_POST["username"];
 
+    //check for escape strings
+    $username = $conn->real_escape_string($username);
+    $password = $conn->real_escape_string($password);
+    
+
     // Make a sql query to see if the user exists (This is useful for both login and signup)
     $sql = "SELECT username FROM user WHERE username = '$username';";
     if (mysqli_query($conn, $sql)->num_rows > 0) {

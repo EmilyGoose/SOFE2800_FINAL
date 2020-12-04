@@ -28,6 +28,11 @@ if (isset($_POST["offerdesc"])) {
     $contact = $_POST["contact"];
     $offerdesc = $_POST["offerdesc"];
 
+    //check for escape strings
+    $contact = $conn->real_escape_string($contact);
+    $offerdesc = $conn->real_escape_string($offerdesc);
+
+
     // Make a sql query to see if the offer was already made
     $sql = "SELECT id FROM offer WHERE fromUserid = '$fromUserid' AND listingid = '$listingid';";
     if (mysqli_query($conn, $sql)->num_rows > 0) {
