@@ -19,8 +19,7 @@
 </head>
 <body>
 <?php include('header.php')?>
-
-    <h1 style="padding-left: 50px;">All Listings:</h1>
+    <h1 style="padding-left: 50px; margin: 0;">All Listings:</h1>
 
     <div class = "grid">
         <?php
@@ -45,7 +44,7 @@
                     echo '<div class ="listingTile">';
                     echo '<img class="listingImage" onclick="window.location.href=\'viewListing.php?whichListing='.$listingid.'\'" src="'. $image .'" alt="listing">';
                     echo '<div class="listingText">';
-                    echo '<h3 class="listingHeader"><a  href = "viewListing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
+                    echo '<h3 class="listingHeader"><a class="gridLink" href = "viewListing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
                     echo '<h4 class="listingHeader">Posted By: <a href = userProfile.php?user=' . $userid . '">'.$username.'</a></h4>';
                     echo '</div></div>';
                 }

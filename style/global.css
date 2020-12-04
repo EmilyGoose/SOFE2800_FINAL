@@ -45,7 +45,7 @@ textarea {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 50px;
 }
 
 /*--Home Listing Tiles--*/
@@ -60,7 +60,7 @@ textarea {
 
     border: 1px solid black;
 
-    margin: clamp(10px, 30px, 100px);
+    margin: clamp(10px, 30px, 100px) clamp(10px, 30px, 100px) clamp(10px, 30px, 100px) 0;
 
     display:flex;
     flex-direction: column;
@@ -103,6 +103,11 @@ textarea {
 
 .listingHeader {
     margin-left: 20px;
+}
+
+.gridLink {
+    text-decoration: none;
+    color: black;
 }
 
 .error {
