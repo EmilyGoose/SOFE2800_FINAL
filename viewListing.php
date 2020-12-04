@@ -5,10 +5,11 @@
 
     if(isset($_SESSION["sessionID"])) {
         $loggedIn = true;
-        $viewerid = $_SESSION["sessionID"];
     }else{
         $loggedIn = false;
     }
+
+    echo $loggedIn;
 
     // Get session user's id
     if ($loggedIn == true){
@@ -81,7 +82,7 @@
             </div>
 
             <!-- Hides button (adds hidden class) if user viewing is same as posting user -->
-            <div id = "offer" <?php if ($loggedIn == true and $userid == $_SESSION['sessionID']) echo 'style="display: none"'?>>
+            <div id = "offer" <?php if(($loggedIn == false) or ($userid == $viewerid)){ echo 'style="display: none"';}?>>
                 <form name="offer" action="makeOffer.php" method="post">
                     <input type="text" name="listingid" value="<?php echo $listingid; ?>" style="display: none">
                     <input type = "button"  onclick="forms['offer'].submit()" id = "offerbtn" value = "Make an Offer!">
