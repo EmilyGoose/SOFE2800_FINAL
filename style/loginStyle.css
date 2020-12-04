@@ -36,4 +36,5 @@ body {
     align-items:center;
     border: 1px solid black;
     background-color: #E3F2FD;
+    min-width: 25%;
 }

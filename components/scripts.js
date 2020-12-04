@@ -4,6 +4,8 @@ function loginMode() {
     // Swap the button color
     document.getElementById("loginButton").style.backgroundColor = "#42A5F5";
     document.getElementById("signupButton").style.backgroundColor = "#90CAF9";
+
+    document.getElementById("loginTitle").innerText = "Login to Marketplace";
     /*
     // Hide all extra fields used for signing up
     const elements = document.getElementsByClassName("signup");
@@ -21,6 +23,8 @@ function signupMode() {
     // Swap the button color
     document.getElementById("loginButton").style.backgroundColor = "#90CAF9";
     document.getElementById("signupButton").style.backgroundColor = "#42A5F5";
+
+    document.getElementById("loginTitle").innerText = "Sign up for Marketplace";
     /*
     // Show all extra fields used for signing up
     const elements = document.getElementsByClassName("signup");

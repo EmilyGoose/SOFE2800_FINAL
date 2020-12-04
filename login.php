@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Login Form</title>
     <link rel="stylesheet" type="text/css" href="style/loginStyle.css">
-    <script type="text/javascript" src="scripts.js" async></script>
+    <script type="text/javascript" src="components/scripts.js" async></script>
     <?php include_once("components/imports.php") ?>
 </head>
 <body>
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="button" class="headerButton" id="signupButton" onclick="signupMode()">Sign Up</button>
     </div>
     <div id="formBody">
-        <h1 class="formHeader">Login to my website</h1>
+        <h1 class="formHeader" id="loginTitle">Login to Marketplace</h1>
         <!-- Form posts to itself -->
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <!--
