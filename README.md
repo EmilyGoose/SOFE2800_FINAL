@@ -12,5 +12,5 @@ password = "password"
 
 ```
 
-Inside dbConnection.php is where a connection is made, 
-when configuring to work on your local machine please alter this file to match your own dbConnection.php file
+Inside php.ini is where a connection is made, 
+when configuring to work on your local machine please alter this file to match your own database.

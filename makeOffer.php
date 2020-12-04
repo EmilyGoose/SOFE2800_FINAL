@@ -10,13 +10,11 @@ if (!$conn) {
 }
 
 session_start();
-//echo "session id is: ". $_SESSION['sessionID']."<br>";
 
 $error = "";
 
 // Get post request variables
 $listingid = $_POST["listingid"];
-//echo $listingid;
 
 // If offerdesc is set this is a request to create an offer
 if (isset($_POST["offerdesc"])) {
@@ -53,6 +51,7 @@ if (isset($_POST["offerdesc"])) {
     }
 }
 
+// Creates query to retrieve appropriate listing from database.
 $query = "SELECT * FROM listing WHERE id= '$listingid';";
 $qresult = $conn->query($query);
 
@@ -63,7 +62,7 @@ $description = $row['description'];
 $image = $row['image'];
 $userid = $row['userid'];
 
-
+// Creates query to retrieve associated user's username
 $query = "SELECT username FROM user WHERE id= '$userid';";
 $qresult = mysqli_query($conn, $query);
 
@@ -94,9 +93,7 @@ $postingUsername = $row['username'];
         <textarea name="offerdesc" placeholder="Enter a description of your offer here." id="" cols="30" rows="10"></textarea>
         <input type="submit">
         <p class="error"><?php echo $error ?></p>
+        </form>
 </div>
-
-
-    </form>
 </body>
 </html>

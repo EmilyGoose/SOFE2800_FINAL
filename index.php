@@ -30,11 +30,13 @@
             // Print out each listing
             if ($qresult){
                 while($row = mysqli_fetch_array($qresult, MYSQLI_ASSOC)){
+                    // Stores details of table array in variables for output.
                     $listingid = $row['id'];
                     $title = $row['title'];
                     $image = $row['image'];
                     $userid = $row['userid'];
 
+                    // Fetches details about the user associated with the listing.
                     $userquery = "SELECT * FROM user WHERE id = '$userid';";
                     $result = mysqli_query($connection, $userquery);
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);

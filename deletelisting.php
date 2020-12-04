@@ -44,13 +44,18 @@ if (mysqli_connect_errno() || $connection === false) {
                 echo '<h1>Listing deleted successfully. </h1>';
                 echo '<h2>Associated offers were deleted successfully </h2><br>';
                 echo '<a href="userProfile.php?user=' . $viewerID . '">Click here to return to your profile</a>';
-            } // Print out could not complete message
+            } 
+            
+            // Print out could not complete message
             else {
+                
                 echo '<h1>Uh oh, something went wrong! Listing could not be deleted. </h1>';
                 echo '<a href="userProfile.php?user=' . $viewerID . '">Click here to return to your profile</a>';
             }
         }
-    } // Could not delete offers redirect
+    } 
+    
+    // Could not delete offers redirect
     else {
         echo '<h1>There was a problem deleting your listing</h1>';
         echo '<a href="userProfile.php?user=' . $viewerID . '">Click here to return to your profile</a>';
