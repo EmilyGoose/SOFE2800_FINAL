@@ -41,10 +41,10 @@ if ($loggedIn) {
     echo '<a href="viewSentOffers.php">View Sent Offers</a>';
     echo '<a href="viewoffers.php">View Received Offers</a>';
     echo '<a href="makeListing.php">Make a Listing</a>';
+    echo '<a href="userProfile.php?user=' . $_SESSION['sessionID'] . '">Your Profile</a>';
 } else {
     echo '<a href="login.php">Login</a>';
 }
-echo '<a href="userProfile.php?user=' . $_SESSION['sessionID'] . '">Your Profile</a>';
 echo '<a href="index.php">Home</a>';
 
 ?>
