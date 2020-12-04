@@ -44,7 +44,8 @@ $postingUsername = $row['username'];
 </head>
 <body>
 <?php include('header.php')?>
-    <h1>Make an offer on <?php echo $listingTitle ?></h1>
+<div class="pageContent">
+    <h1>Make an offer on <?php echo $postingUsername ?>'s <?php echo $listingTitle ?></h1>
     <form action="checkOffer.php" method="post">
         <input type="text" name="fromUserid" value="<?php echo $_SESSION['sessionID'] ?>" style="display: none">
         <input type="text" name="toUserid" value="<?php echo $userid ?>" style="display: none">
@@ -56,7 +57,7 @@ $postingUsername = $row['username'];
         <label for="offerdesc">Describe your offer</label>
         <textarea name="offerdesc" placeholder="Enter a description of your offer here." id="" cols="30" rows="10"></textarea>
         <input type="submit">
-
+</div>
 
 
     </form>

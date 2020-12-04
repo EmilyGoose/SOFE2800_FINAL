@@ -23,6 +23,19 @@ textarea {
     resize: none;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: Montserrat, sans-serif;
+}
+
+a {
+    color: #616161;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 .formHeader {
     font-family: Montserrat, sans-serif;
 }
@@ -116,6 +129,10 @@ textarea {
 .gridLink {
     text-decoration: none;
     color: black;
+}
+
+.delbtn {
+    max-width: 20%;
 }
 
 .error {
