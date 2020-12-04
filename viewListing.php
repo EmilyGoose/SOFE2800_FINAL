@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['whichListing']) and i
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     // Only run the update for own listing
     if ($row['userId'] == $viewerid) {
+        $title = $connection->real_escape_string($newText);
         $query = "UPDATE listing SET description='$newText' WHERE id= '$whichListing'";
         $connection->query($query);
     }
