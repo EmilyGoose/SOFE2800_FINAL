@@ -9,8 +9,8 @@ Create a file called `php.ini` with the following:
 ip = "server ip"
 user = "username"
 password = "password"
+database = "database name"
 
 ```
 
-Inside php.ini is where a connection is made, 
-when configuring to work on your local machine please alter this file to match your own database.
+`dbConnection.php` reads the ini file and connects to the database with those credentials
