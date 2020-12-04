@@ -29,7 +29,7 @@ if ($loggedIn == true) {
     $username = "please log in";
 }
 ?>
-<link rel="stylesheet" type="text/css" href="style/headerStyle.css">
+
 
 <?php
 // Print the header
@@ -57,6 +57,7 @@ echo '<a href="index.php">Home</a>';
 <div class="content">
 </div>
 
+<link rel="stylesheet" type="text/css" href="style/headerStyle.css">
 <!--used to control sticky class on the header-->
 <script type="text/javascript" src="headerScripts.js"></script>
 
