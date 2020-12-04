@@ -26,6 +26,7 @@ $username = $row['username'];
         <a href="userProfile.php?user=<?php echo $_SESSION['sessionID']?>">Your Profile</a>
         <a href="makeListing.php">Make a Listing</a>
         <a href="viewoffers.php">View Received Offers</a>
+        <a href="viewSentOffers.php">View Sent Offers</a>
     </nav>
 </div>
 
