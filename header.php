@@ -52,6 +52,7 @@ echo '<a href="index.php">Home</a>';
 </nav>
 </div>
 
+
 <!--needed for stopping the snapping motion-->
 <div class="content">
 </div>
