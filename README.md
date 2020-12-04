@@ -2,6 +2,8 @@
 
 ## Database Config
 
+Create a file called `php.ini` with the following:
+
 ```ini
 [db_config]
 ip = "server ip"

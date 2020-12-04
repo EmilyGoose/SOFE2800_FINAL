@@ -107,7 +107,7 @@ if (isset($_GET['whichListing']) or isset($_POST['whichListing'])) {
             <!-- Form for editing the listing. Permissions are validated on post. -->
             <form id="editForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <input type="text" style="display: none;" name="whichListing" value="<?php echo $listingId ?>">
-                <textarea name="newText" cols="30" rows="3" id="editBox"
+                <textarea name="newText" cols="50" rows="3" id="editBox"
                           style="display:none;"><?php echo $description ?></textarea>
             </form>
             <div class="buttonRow">
