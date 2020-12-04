@@ -25,7 +25,7 @@ $username = $row['username'];
         <?php if($_SESSION['sessionID'] != null){
             echo '<a href="index.php">Index/Logout</a>';
             echo '<a href="home.php">Home</a>';
-            echo '<a href="userProfile.php?user=<?php echo $_SESSION[\'sessionID\']?>">Your Profile</a>';
+            echo '<a href="userProfile.php?user='.$_SESSION['sessionID'].'">Your Profile</a>';
             echo'<a href="makeListing.php">Make a Listing</a>';
             echo'<a href="viewoffers.php">View Received Offers</a>';
             echo'<a href="viewSentOffers.php">View Sent Offers</a>';
