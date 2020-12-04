@@ -43,7 +43,7 @@ if ($loggedIn) {
     echo '<a href="../makeListing.php">Make a Listing</a>';
     echo '<a href="userProfile.php?user=' . $_SESSION['sessionID'] . '">Your Profile</a>';
 } else {
-    echo '<a href="login.php">Login</a>';
+    echo '<a href="login.php">Login/Signup</a>';
 }
 echo '<a href="index.php">Home</a>';
 
