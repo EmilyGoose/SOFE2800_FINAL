@@ -18,7 +18,7 @@
         $offerid = $_GET['offerid'];
 
         // Makes sure the offer to be deleted is the same as the passed id and the toUser is the same as the viewing user.
-        $query="DELETE * FROM offer WHERE id= '$offerid' AND toUserid = '$viewerID';";
+        $query="DELETE FROM offer WHERE id= '$offerid' AND toUserid = '$viewerID';";
         $qresult = mysqli_query($connection, $query);
         
         // Print out success message (I am not sure if my condition is correct?)

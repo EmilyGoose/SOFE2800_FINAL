@@ -23,7 +23,7 @@
         $listingid = $_GET['listingid'];
 
         // Makes sure the offer to be deleted is the same as the passed id and the toUser is the same as the viewing user.
-        $query="DELETE * FROM offer WHERE listingid= '$listingid' AND toUserid = '$viewerID';";
+        $query="DELETE FROM offer WHERE listingid= '$listingid' AND toUserid = '$viewerID';";
         $qresult = mysqli_query($connection, $query);
 
         // Print out success message (I am not sure if my condition is correct?)
@@ -31,7 +31,7 @@
             echo '<h2>Associated offers were deleted successfully </h2><br>';
 
             // Tries to delete listing if offer to be deleted is the same as the passed id and the toUser is the same as the viewing user.
-            $query="DELETE * FROM listing WHERE id= '$listingid' AND userid = '$viewerID';";
+            $query="DELETE FROM listing WHERE id= '$listingid' AND userid = '$viewerID';";
             $result = mysqli_query($connection, $query);
 
             // Print out success message
