@@ -15,12 +15,12 @@
 <html>
 <head>
     <title>Marketplace Home</title>
-    <link rel="stylesheet" type="text/css" href="style/global.css">
+    <?php include_once("components/imports.php") ?>
 </head>
 <body>
 <?php include('header.php')?>
 
-    <div class = "tiledlistings">
+    <div class = "grid">
         <?php
             // Gets all listings in table
             $query="SELECT * FROM listing;";
@@ -41,10 +41,10 @@
                     
                     // Prints each listing in it's own div for flexboxes
                     echo '<div class ="listingTile">';
-                    echo '<img class="listingImage" src="'. $image .'" alt="listing">';
+                    echo '<img class="listingImage" onclick="window.location.href=\'viewListing.php?whichListing='.$listingid.'\'" src="'. $image .'" alt="listing">';
                     echo '<div class="listingText">';
-                    echo '<h3><a  href = "viewListing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
-                    echo '<h4>Posted By: <a href = userProfile.php?user=' . $userid . '">'.$username.'</a></h4>';
+                    echo '<h3 class="listingHeader"><a  href = "viewListing.php?whichListing='.$listingid.'">'.$title.'</a></h3>';
+                    echo '<h4 class="listingHeader">Posted By: <a href = userProfile.php?user=' . $userid . '">'.$username.'</a></h4>';
                     echo '</div></div>';
                 }
             }
