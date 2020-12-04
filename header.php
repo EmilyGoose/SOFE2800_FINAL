@@ -23,14 +23,16 @@ $username = $row['username'];
 <div class="header" id="navbar">
     <nav class="header">
         <?php if($_SESSION['sessionID'] != null){
-            echo '<a href="index.php">Index/Logout</a>';
+
             echo '<a href="home.php">Home</a>';
             echo '<a href="userProfile.php?user='.$_SESSION['sessionID'].'">Your Profile</a>';
             echo'<a href="makeListing.php">Make a Listing</a>';
             echo'<a href="viewoffers.php">View Received Offers</a>';
             echo'<a href="viewSentOffers.php">View Sent Offers</a>';
+
+            echo '<a href="logout.php">Logout</a>';
         } else{
-            echo '<a href="login.php">Index/Logout</a>';
+            echo '<a href="login.php">Login</a>';
             echo '<a href="home.php">Home</a>';
         } ?>
 
