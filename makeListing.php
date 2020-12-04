@@ -67,24 +67,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <?php include('header.php') ?>
-<h1>Make a listing</h1>
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-    <input type="text" name="userid" value="<?php echo $userid ?>" style="display: none">
+<div class="pageContent">
+    <h1>Make a listing</h1>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <input type="text" name="userid" value="<?php echo $userid ?>" style="display: none">
 
-    <label for="title">Title your listing: </label>
-    <input type="text" name="title" required>
-    <br>
-    <label for="description">Describe your item: </label>
-    <textarea name="description" id="" cols="30" rows="10" required>Enter a description of your listing here.</textarea>
-    <br>
+        <label for="title">Title your listing: </label>
+        <input type="text" name="title" required>
+        <br>
+        <label for="description">Describe your item: </label>
+        <textarea name="description" id="" cols="30" rows="10" placeholder="Enter a description of your listing here."
+                  required></textarea>
+        <br>
 
-    <label for="image">paste a link to your image: </label>
-    <input type="text" name="image" required>
+        <label for="image">paste a link to your image: </label>
+        <input type="text" name="image" required>
 
-    <input type="submit">
+        <input type="submit">
 
-    <p class="error"><?php echo $error; ?></p>
+        <p class="error"><?php echo $error; ?></p>
 
-</form>
+    </form>
+</div>
 </body>
 </html>

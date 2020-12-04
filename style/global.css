@@ -37,7 +37,8 @@ textarea {
 }
 
 .pageContent {
-    padding: 2%;
+    width: 70%;
+    margin: auto;
 }
 
 .grid {
@@ -66,12 +67,30 @@ textarea {
 
 }
 
+.postContent {
+    display:flex;
+    flex-direction: row;
+}
+
+.postBody {
+    margin-left: 20px;
+}
+
 .listingImage{
     background-color: black;
     object-fit: cover;
     width: 100%;
     height: 100%;
     cursor: pointer;
+}
+
+.listingBigImage {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.actionButton {
+    max-width: 200px;
 }
 
 .listingText{
