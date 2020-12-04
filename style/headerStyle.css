@@ -4,8 +4,8 @@
     background-color: #90CAF9;
     font-family: Montserrat, sans-serif;
     font-size: 20px;
-    padding: 10px;
     z-index: 999;
+    padding: 10px 0 10px 10px;
 }
 
 /* Navbar links */

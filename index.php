@@ -20,6 +20,8 @@
 <body>
 <?php include('header.php')?>
 
+    <h1 style="padding-left: 50px;">All Listings:</h1>
+
     <div class = "grid">
         <?php
             // Gets all listings in table
