@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 while ($row = $result->fetch_assoc()) {
                     $_SESSION['sessionID'] = $row['id'];
                     //echo "your User id is ".$row['id']."<br>" ."session id is the same: ".$_SESSION['sessionID'];
-                    header("Location:home.php");
+                    header("Location:index.php");
 
                 }
             }
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_query($conn, $sql);
             // Log the user in as the newly created user
             $_SESSION['sessionID'] = $conn->insert_id;
-            header("Location:home.php");
+            header("Location:index.php");
         }
     }
 }

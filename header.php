@@ -24,7 +24,7 @@ $username = $row['username'];
             echo '<h1 class="headerUsername">Welcome:'.$username.'</h1>';
             echo '<div class="header" id="navbar">';
                echo '<nav class="header">';
-                    echo '<a href="home.php">Home</a>';
+                    echo '<a href="index.php">Home</a>';
                     echo '<a href="userProfile.php?user='.$_SESSION['sessionID'].'">Your Profile</a>';
                     echo '<a href="makeListing.php">Make a Listing</a>';
                     echo '<a href="viewoffers.php">View Received Offers</a>';
@@ -37,7 +37,7 @@ $username = $row['username'];
             echo '<div class="header" id="navbar">';
                 echo '<nav class="header">';
                     echo '<a href="login.php">Login</a>';
-                    echo '<a href="home.php">Home</a>';
+                    echo '<a href="index.php">Home</a>';
         }?>
 
     </nav>
