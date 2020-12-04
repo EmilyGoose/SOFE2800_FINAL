@@ -112,6 +112,7 @@ a:hover {
 
 .actionButton {
     max-width: 200px;
+    margin-right: 10px;
 }
 
 .listingText{
@@ -133,6 +134,11 @@ a:hover {
 
 .delbtn {
     max-width: 20%;
+}
+
+.buttonRow {
+    display: flex;
+    flex-direction: row;
 }
 
 .error {

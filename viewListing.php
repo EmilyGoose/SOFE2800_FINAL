@@ -26,11 +26,25 @@ if (mysqli_connect_errno() || $connection === false) {
     die("Database connection failed: " . mysqli_connect_error() . "(" . mysqli_connect_errno() . ")");
 }
 
+// Post request means we've updated a listing
+if ($_SERVER["REQUEST_METHOD"] == "POST" and isset($_POST['whichListing']) and isset($_POST['newText'])) {
+    $newText = $_POST['newText'];
+    $whichListing = $_POST['whichListing'];
+    $query = "UPDATE listing SET description='$newText' WHERE id= '$whichListing'";
+    $connection->query($query);
+}
+
 
 // Gets id of listing to be displayed from post stream <- NEEDS TO BE PARAM REQUEST FOR LISTING ID
-if (isset($_GET['whichListing'])) {
-    $listingid = $_GET['whichListing'];
-    $query = "SELECT * FROM listing WHERE id= '$listingid'";
+// Need to check both get and post depending on how we got to the page
+if (isset($_GET['whichListing']) or isset($_POST['whichListing'])) {
+    $listingId = "";
+    if (isset($_GET['whichListing'])) {
+        $listingId = $_GET['whichListing'];
+    } else {
+        $listingId = $_POST['whichListing'];
+    }
+    $query = "SELECT * FROM listing WHERE id= '$listingId'";
     $qresult = $connection->query($query);
 
     // Obtains the data contained for the matching table row.
@@ -54,6 +68,7 @@ if (isset($_GET['whichListing'])) {
 <head>
     <title> <?php echo 'Listing: ' . $title ?> </title>
     <?php include_once("components/imports.php"); ?>
+    <script type="text/javascript" src="components/editListing.js"></script>
     <script type="text/javascript">
         // Listener for button to redirect to offer page if clicked
         document.getElementById("offerbtn").onclick = function () {
@@ -77,21 +92,31 @@ if (isset($_GET['whichListing'])) {
         </div>
         <div class="postBody">
             <h3 style="margin-top: 0;">Item Description:</h3>
-            <p><?php echo $description ?></p>
+            <p id="itemDesc"><?php echo $description ?></p>
+            <!-- Form for editing the listing. Permissions are validated on post. -->
+            <form id="editForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <input type="text" style="display: none;" name="whichListing" value="<?php echo $listingId ?>">
+                <textarea name="newText" cols="30" rows="3" id="editBox"
+                          style="display:none;"><?php echo $description ?></textarea>
+            </form>
             <div class="buttonRow">
                 <!-- Hides button (adds hidden class) if user viewing is same as posting user -->
                 <div id="offer" <?php if (($loggedIn == false) or ($userid == $viewerid)) {
                     echo 'style="display: none"';
                 } ?>>
                     <form name="offer" action="makeOffer.php" method="post">
-                        <input type="text" name="listingid" value="<?php echo $listingid; ?>" style="display: none">
-                        <input type="button" onclick="forms['offer'].submit()" class="actionButton" value="Make an Offer!">
+                        <input type="text" name="listingid" value="<?php echo $listingId; ?>" style="display: none">
+                        <input type="button" onclick="forms['offer'].submit()" class="actionButton"
+                               value="Make an Offer!">
                     </form>
                 </div>
                 <?php
-                // If the listing creator is viewing give them an option to delete
+                // If the listing creator is viewing give them an option to delete and edit
                 if ($userid == $viewerid) {
-                    echo '<input type="button" class="actionButton" value ="Delete Listing" onclick="window.location.href=\'deletelisting.php?listingid='.$listingid.'\'">';
+                    // Edit button
+                    echo '<input type="button" class="actionButton" id="editButton" value="Edit Listing" onclick="editListing()">';
+                    // Delete button
+                    echo '<input type="button" class="actionButton" value ="Delete Listing" onclick="window.location.href=\'deletelisting.php?listingid=' . $listingId . '\'">';
                 }
                 ?>
             </div>
@@ -99,9 +124,6 @@ if (isset($_GET['whichListing'])) {
     </div>
 
 
-
-
-
-    </div>
+</div>
 </body>
 </html>

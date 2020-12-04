@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else if ($mode == "signup") {
         // Check if the user exists
         if ($userExists) {
-            $error = "A user already exists with that username";
+            $error = "A user already exists with that username.";
         } else {
             // Insert the new info into the database
             $sql = "INSERT INTO user (username, passwordHash) VALUES ('$username','$password');";
