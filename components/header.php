@@ -37,10 +37,10 @@ echo '<div class="header" id="navbar">';
 echo '<nav class="header">';
 echo '<span class="headerUsername">Welcome, ' . $username . '</span>';
 if ($loggedIn) {
-    echo '<a href="../logout.php">Logout</a>';
-    echo '<a href="../viewSentOffers.php">View Sent Offers</a>';
-    echo '<a href="../viewoffers.php">View Received Offers</a>';
-    echo '<a href="../makeListing.php">Make a Listing</a>';
+    echo '<a href="logout.php">Logout</a>';
+    echo '<a href="viewSentOffers.php">View Sent Offers</a>';
+    echo '<a href="viewoffers.php">View Received Offers</a>';
+    echo '<a href="makeListing.php">Make a Listing</a>';
     echo '<a href="userProfile.php?user=' . $_SESSION['sessionID'] . '">Your Profile</a>';
 } else {
     echo '<a href="login.php">Login/Signup</a>';

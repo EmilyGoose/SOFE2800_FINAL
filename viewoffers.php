@@ -52,11 +52,11 @@ if (mysqli_connect_errno() || $connection === false){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 $title = $row['title'];
 
-                        // Obtains the name of the offerer from the user table.
-                        $query = "SELECT * FROM user WHERE id = '$offerer';";
-                        $result = mysqli_query($connection, $query);
-                        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                        $offerName = $row['username'];
+                // Obtains the name of the offerer from the user table.
+                $query = "SELECT * FROM user WHERE id = '$offerer';";
+                $result = mysqli_query($connection, $query);
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $offerName = $row['username'];
 
                 echo '<h2> Offer ' . $counter . ':</h2>';
                 echo '<h3><a href = "viewListing.php?whichListing=' . $listingid . ' ">' . $title . '</a></h3>';
