@@ -1,6 +1,7 @@
 <?php
 $iniConfig = parse_ini_file("php.ini");
 
+// Include and call function to connect to db
 include_once 'components/dbConnection.php';
 $conn = getConnection();
 
@@ -21,7 +22,7 @@ $username = $row['username'];
 
 
         <?php if($_SESSION['sessionID'] != null){
-            echo '<h1 class="headerUsername">Welcome:'.$username.'</h1>';
+            echo '<h1 class="headerUsername">Welcome: '.$username.'</h1>';
             echo '<div class="header" id="navbar">';
                echo '<nav class="header">';
                     echo '<a href="index.php">Home</a>';

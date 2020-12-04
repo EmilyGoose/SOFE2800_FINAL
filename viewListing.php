@@ -1,20 +1,19 @@
 <?php
     session_start();
     // Checks if user is logged in (session id set)
-    include 'checkSessionID.php';
+   // include 'checkSessionID.php';
 
     // Get session user's id
-    $viewerid = $_SESSION['sessionID'];
-    
-    // Get the php.ini file with the db config
-    $iniConfig = parse_ini_file("php.ini");
-    
-    //Establishing connection
-    $servername = $iniConfig["ip"];
-    $dbusername = $iniConfig["user"];
-    $password = $iniConfig["password"];
-    $dbname = $iniConfig["database"];
-    $connection = mysqli_connect($servername, $dbusername, $password, $dbname);
+    if($_SESSION['sessionID'] != null) {
+        $viewerid = $_SESSION['sessionID'];
+    }else{
+        $viewerid =null;
+    }
+
+
+    // Include and call function to connect to db
+    include_once 'components/dbConnection.php';
+    $connection = getConnection();
 
     // Output error message if connection unsuccessful.
     if (mysqli_connect_errno() || $connection === false){
@@ -75,9 +74,9 @@
             </div>
 
             <!-- Hides button (adds hidden class) if user viewing is same as posting user -->
-            <div id = "offer" <?php if ($userid == $viewerid ) echo 'hidden'?>>
+            <div id = "offer" <?php if ($_SESSION['sessionID'] == null or $userid == $_SESSION['sessionID']) echo 'style="display: none"'?>>
                 <form name="offer" action="makeOffer.php" method="post">
-                    <input type="text" name="listingid" value="<?php echo $listingid; ?>" hidden>
+                    <input type="text" name="listingid" value="<?php echo $listingid; ?>" style="display: none">
                     <input type = "button"  onclick="forms['offer'].submit()" id = "offerbtn" value = "Make an Offer!">
                 </form>
             </div>
