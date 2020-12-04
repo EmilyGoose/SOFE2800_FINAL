@@ -1,13 +1,10 @@
 <?php
     session_start();
-    $iniConfig = parse_ini_file("php.ini");
+ 
 
-    //Establishing server connection
-    $servername = $iniConfig["ip"];
-    $dbusername = $iniConfig["user"];
-    $password = $iniConfig["password"];
-    $dbname = $iniConfig["database"];
-    $connection = mysqli_connect ($servername, $dbusername, $password, $dbname);
+    // Include and call function to connect to db
+    include_once 'components/dbConnection.php';
+    $connection = getConnection();
 
     // Output error message if connection unsuccessful.
     if (mysqli_connect_errno() || $connection === false){

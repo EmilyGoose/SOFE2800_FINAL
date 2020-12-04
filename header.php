@@ -9,19 +9,28 @@ $conn = getConnection();
 if (mysqli_connect_errno() || $conn === false){
     die("Database connection failed: ".mysqli_connect_error()."(".mysqli_connect_errno().")");
 }
+if(isset($_SESSION["sessionID"])) {
+    $loggedIn = true;
+    $viewerid = $_SESSION["sessionID"];
+}else{
+    $loggedIn = false;
+}
 
-$viewerid= $_SESSION["sessionID"];
-$query="SELECT username FROM user WHERE id= '$viewerid';";
-$qresult = mysqli_query($conn,$query);
+//get the username of the logged in user if there is a logged in user
+if ($loggedIn == true){
 
-// Obtains the data contained for the matching table row using mysqli.
-$row = mysqli_fetch_array($qresult, MYSQLI_ASSOC);
-$username = $row['username'];
+    $query="SELECT username FROM user WHERE id= '$viewerid';";
+    $qresult = mysqli_query($conn,$query);
+
+    // Obtains the data contained for the matching table row using mysqli.
+    $row = mysqli_fetch_array($qresult, MYSQLI_ASSOC);
+    $username = $row['username'];
+}
 ?>
 <link rel="stylesheet" type="text/css" href="style/headerStyle.css">
 
 
-        <?php if($_SESSION['sessionID'] != null){
+        <?php if($loggedIn){
             echo '<h1 class="headerUsername">Welcome: '.$username.'</h1>';
             echo '<div class="header" id="navbar">';
                echo '<nav class="header">';
