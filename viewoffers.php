@@ -58,6 +58,7 @@ if (mysqli_connect_errno() || $connection === false){
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 $offerName = $row['username'];
 
+                // Output the offer
                 echo '<h2> Offer ' . $counter . ':</h2>';
                 echo '<h3><a href = "viewListing.php?whichListing=' . $listingid . ' ">' . $title . '</a></h3>';
                 echo '<h3>Offer made by: ' . $offerName . '</h3><h3> Contact information: ' . $contact . '</h3>';

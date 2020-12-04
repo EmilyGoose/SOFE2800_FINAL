@@ -47,15 +47,6 @@ if (isset($_GET['user'])) {
         $qresult = mysqli_query($connection, $query);
 
         while ($row = mysqli_fetch_array($qresult, MYSQLI_ASSOC)) {
-//            $listingid = $row['id'];
-//            $title = $row['title'];
-//
-//            echo '<h3><a href = "viewListing.php?whichListing=' . $listingid . '">' . $title . '</a></h3>';
-//
-//            // Shows delete listing button if the profile belongs to the viewer
-//            if ($userid == $viewerID) {
-//                echo '<input type="button" class="delbtn" value ="Delete Listing" onclick="window.location.href=\'deletelisting.php?listingid=' . $listingid . '\'"><br>';
-//            }
             $listingid = $row['id'];
             $title = $row['title'];
             $image = $row['image'];

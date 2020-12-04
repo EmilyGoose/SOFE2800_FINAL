@@ -58,7 +58,7 @@ if (mysqli_connect_errno() || $connection === false) {
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 $posterName = $row['username'];
 
-
+                // Output the offer
                 echo '<h2> Offer ' . $counter . ':</h2>';
                 echo '<h3><a href="userProfile.php?user=' . $posterid . '">' . $posterName . '</a>\'s <b><a href = "viewListing.php?whichListing=' . $listingid . ' "></b>' . $title . '</a></h3>';
                 echo '';

@@ -11,10 +11,6 @@ $connection = getConnection();
 if (mysqli_connect_errno() || $connection === false) {
     die("Database connection failed: " . mysqli_connect_error() . "(" . mysqli_connect_errno() . ")");
 }
-
-
-
-
 ?>
 
 <html>
