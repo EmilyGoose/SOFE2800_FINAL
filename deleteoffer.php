@@ -12,7 +12,7 @@ if (mysqli_connect_errno() || $connection === false) {
     die("Database connection failed: " . mysqli_connect_error() . "(" . mysqli_connect_errno() . ")");
 }
 
-include('components/header.php');
+
 
 
 ?>
@@ -23,7 +23,7 @@ include('components/header.php');
     <?php include_once("components/imports.php"); ?>
 </head>
 <body>
-include('components/header.php');
+<?php include('components/header.php');?>
 <div class="pageContent">
     <?php
     if (isset($_GET['offerid'])) {
