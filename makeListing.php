@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST["description"];
     $image = $_POST["image"];
 
+    $title = $conn->real_escape_string($title);
     // Make a sql query to see if listing by same user has the same title
     $sql = "SELECT id FROM listing WHERE userid = '$userid$' AND title = '$title';";
     if (mysqli_query($conn, $sql)->num_rows > 0) {
